@@ -1,0 +1,45 @@
+<html>
+    <head>
+        
+        <title>Home page </title>
+    </head>
+    <body>
+        <h1>Welcome!</h1>
+         <ul>
+             <li><a class="active" href ="#home">Home</a></li>
+             <li><a href ="#news">News</a></li>
+             <li style ="float:right"><a href ="#about">about</a></li>
+         </ul>
+         <img src="brewjournal.png" alt="Brewski logo">
+    </body>
+</html>
+
+<style>
+    li {
+        float:left;
+    }
+    
+    ul{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    li a{
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover{
+        background-color: #111; 
+    }
+
+    .active{
+        background-color:#4CAF50;
+    }
+</style>
