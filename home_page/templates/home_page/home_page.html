@@ -1,16 +1,17 @@
 <html>
     <head>
-        
-        <title>Home page </title>
+        <title> Home page </title>
     </head>
     <body>
-        <h1>Welcome!</h1>
+        <h1 align = "center">Welcome!</h1>
          <ul>
-             <li><a class="active" href ="#home">Home</a></li>
-             <li><a href ="#news">News</a></li>
-             <li style ="float:right"><a href ="#about">about</a></li>
+             <li><a href ="#home">Home</a></li>
+             <li><a href ="#profile">Profile</a></li>
+             <li style ="float:right"><a href ="#about">About</a></li>
+             <li style ="float:right"><a href ="#sign_in">Sign in</a></li>
          </ul>
-         <img src="brewjournal.png" alt="Brewski logo">
+         {% load static %}
+         <img src="{% static 'journal/brewjournal.png' %}" alt="Brewski logo"/>
     </body>
 </html>
 
@@ -18,13 +19,14 @@
     li {
         float:left;
     }
+
     
     ul{
         list-style-type: none;
         margin: 0;
         padding: 0;
         overflow: hidden;
-        background-color: #333;
+        background-color: #317393;
     }
 
     li a{
@@ -33,10 +35,6 @@
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
-    }
-
-    li a:hover{
-        background-color: #111; 
     }
 
     .active{
