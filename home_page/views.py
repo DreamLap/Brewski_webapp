@@ -30,7 +30,7 @@ def get_name(request):
 			)
 			
             # redirect to a new URL:
-            return HttpResponseRedirect('/home_page/')
+            return HttpResponseRedirect('home_page/home_page.html')
 
     # if a GET (or any other method) we'll create a blank form
     else:
