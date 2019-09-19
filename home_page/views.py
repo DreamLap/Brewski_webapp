@@ -18,10 +18,7 @@ def get_name(request):
         # check whether it's valid:
         if form.is_valid():
             # process the data in form.cleaned_data as required
-            dynamodb = boto3.resource('dynamodb', 
-                               region_name='us-east-1',
-                               aws_access_key_id='AKIAJTNALKALUKKL3XUQ',
-                               aws_secret_access_key='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')
+            dynamodb = boto3.resource('dynamodb')
 			table = dynamodb.Table('Journal')
 			table.put_item(
 			Item={
