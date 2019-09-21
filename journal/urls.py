@@ -20,5 +20,5 @@ from django.conf.urls import url, include
 urlpatterns = [
     path('b_journal/', include('b_journal.urls')),
     path('admin/', admin.site.urls),
-    path('home_page/', include('home_page.urls')),
+    url('home_page/', include('home_page.urls')),
 ]

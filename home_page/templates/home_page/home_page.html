@@ -1,19 +1,16 @@
-<html>
-    <head>
+{% extends 'base.html' %}
+
+
+        {% block head %}
         <title> Home page </title>
-    </head>
-    <body>
+        {% endblock %}
+
         <h1 align = "center">Welcome!</h1>
-         <ul>
-             <li><a href ="#home">Home</a></li>
-             <li><a href ="#profile">Profile</a></li>
-             <li style ="float:right"><a href ="#about">About</a></li>
-             <li style ="float:right"><a href ="#sign_in">Sign in</a></li>
-         </ul>
-         {% load static %}
-         <img src="{% static 'journal/brewjournal.png' %}" alt="Brewski logo"/>
-    </body>
-</html>
+
+        {% block body %}
+
+        {% endblock %}
+
 
 <style>
     li {
