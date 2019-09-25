@@ -6,17 +6,15 @@
         </title>
     </head>
     <body>
-            <ul>
-                    <li><a href ="/">Home</a></li>
-                    <li><a href ="#profile">Profile</a></li>
-                    <li><a href ="#create_journal">Create journal</a></li>
-                    <li style ="float:right"><a href ="#about">About</a></li>
-                    <li style ="float:right"><a href ="#sign_in">Sign in</a></li>
-                    <li style ="float:right"><a href ="#create_account">Create account</a></li>
-            </ul>
-        <h3>
-            Create Journal Entry
-        </h3>
+            <h1 align = "center">Create journal entry</h1>
+        <ul>
+            <li><a href ="/">Home</a></li>
+            <li><a href ="#profile">Profile</a></li>
+            <li><a href ="#create_journal">Create journal</a></li>
+            <li style ="float:right"><a href ="#about">About</a></li>
+            <li style ="float:right"><a href ="#sign_in">Sign in</a></li>
+            <li style ="float:right"><a href ="{% url 'home_page:register' %}">Create account</a></li>
+        </ul>
         <p>
             <br>
             

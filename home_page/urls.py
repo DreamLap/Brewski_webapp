@@ -8,6 +8,6 @@ app_name = 'home_page'
 
 urlpatterns = [
     url('get_name/', views.get_name, name = 'get_name'),
-    url('home_page/', views.get_name, name = 'home_page'),
+    url('register/', views.register, name = 'register'),
     url('', views.home_page),
 ]

@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from django.http import HttpResponseRedirect
-
+from django.contrib.auth.forms import UserCreationForm
 from .forms import JournalForm
 import boto3
   
@@ -9,6 +9,9 @@ import boto3
 def home_page(request):
     return render(request, 'home_page/home_page.html')
 
+def register(request):
+    form = UserCreationForm()
+    return render(request, 'register/register.html', {'form': form})
 
 def get_name(request):
     # if this is a POST request we need to process the form data
