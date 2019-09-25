@@ -7,5 +7,5 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.home_page),
-    url(r'^login/$', LoginView, {'template_name': 'home_page/login.html'})
+	path(''views.get_name, name = 'get_name'),
 ]
