@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="static/test.css">
         <title>
-           Brew Journal
+           Create Journal
         </title>
     </head>
     <body>
+            <ul>
+                    <li><a href ="/">Home</a></li>
+                    <li><a href ="#profile">Profile</a></li>
+                    <li><a href ="#create_journal">Create journal</a></li>
+                    <li style ="float:right"><a href ="#about">About</a></li>
+                    <li style ="float:right"><a href ="#sign_in">Sign in</a></li>
+                    <li style ="float:right"><a href ="#create_account">Create account</a></li>
+            </ul>
         <h3>
             Create Journal Entry
         </h3>
         <p>
             <br>
             
-				<form action="/Create_Journal/" method="post">
+				<form action="/" method="post">
 					{% csrf_token %}
 					{{ form }}
 					<input type="submit" value="Submit">
@@ -22,3 +29,30 @@
         </p>
     </body>
 </html>
+
+<style>
+    li {
+  float:left;
+}
+
+
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #317393;
+}
+
+li a{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.active{
+  background-color:#4CAF50;
+}
+</style>

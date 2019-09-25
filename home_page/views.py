@@ -19,8 +19,8 @@ def get_name(request):
         if form.is_valid():
             # process the data in form.cleaned_data as required
             dynamodb = boto3.resource('dynamodb')
-			table = dynamodb.Table('Journal')
-			table.put_item(
+            table = dynamodb.Table('Journal')
+            table.put_item(
 			Item={
 					'JournalID': form.cleaned_data,
 				}
@@ -33,4 +33,4 @@ def get_name(request):
     else:
         form = JournalForm()
 
-    return render(request, 'Create_Journal.html', {'form': form})
+    return render(request, 'Create_Journal/Create_Journal.html', {'form': form})
