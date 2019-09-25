@@ -15,16 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-<<<<<<< HEAD
-=======
 from django.conf.urls import url, include
->>>>>>> master
+
 
 urlpatterns = [
-    path('b_journal/', include('b_journal.urls')),
+    #path('b_journal/', include('b_journal.urls')),
     path('admin/', admin.site.urls),
-<<<<<<< HEAD
-=======
-    path('home_page/', include('home_page.urls')),
->>>>>>> master
+    #path('home_page/', include('home_page.urls')),
+    url(r'^home_page/', include('home_page.urls')),
 ]
