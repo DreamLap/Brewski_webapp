@@ -7,11 +7,14 @@ import boto3
 # Create your views here.
 
 def home_page(request):
-    return render(request, 'home_page/home_page.html')
+    return render(request, 'home_page.html')
+
+def login(request):
+    return render(request, 'login.html')
 
 def register(request):
     form = UserCreationForm()
-    return render(request, 'register/register.html', {'form': form})
+    return render(request, 'register.html', {'form': form})
 
 def get_name(request):
     # if this is a POST request we need to process the form data
@@ -30,10 +33,10 @@ def get_name(request):
 			)
 			
             # redirect to a new URL:
-            return HttpResponseRedirect('home_page/home_page.html')
+            return HttpResponseRedirect('home_page.html')
 
     # if a GET (or any other method) we'll create a blank form
     else:
         form = JournalForm()
 
-    return render(request, 'Create_Journal/Create_Journal.html', {'form': form})
+    return render(request, 'Create_Journal.html', {'form': form})
