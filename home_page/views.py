@@ -1,15 +1,21 @@
 from django.shortcuts import render, HttpResponse
 from django.http import HttpResponseRedirect
-
+from django.contrib.auth.forms import UserCreationForm
 from .forms import JournalForm
 from .models import create_journal as cj
 import boto3
   
 # Create your views here.
 
-def index(request):
-    return render(request, 'home_page/home_page.html')
+def home_page(request):
+    return render(request, 'home_page.html')
 
+def login(request):
+    return render(request, 'login.html')
+
+def register(request):
+    form = UserCreationForm()
+    return render(request, 'register.html', {'form': form})
 
 def create_journal(request):
     # if this is a POST request we need to process the form data
@@ -21,7 +27,7 @@ def create_journal(request):
             # process the data in form.cleaned_data as required
             cj(form.cleaned_data)
             # redirect to a new URL:
-            return HttpResponseRedirect('home_page/home_page.html')
+            return HttpResponseRedirect('home_page.html')
 
     # if a GET (or any other method) we'll create a blank form
     else:

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+           Create Journal
+        </title>
+    </head>
+    <body>
+            <h1 align = "center">Create journal entry</h1>
+        <ul>
+            <li><a href ="/">Home</a></li>
+            <li><a href ="#profile">Profile</a></li>
+            <li><a href ="{% url 'home_page:get_name' %}">Create journal</a></li>
+            <li style ="float:right"><a href ="#about">About</a></li>
+            <li style ="float:right"><a href ="{% url 'home_page:login' %}">Sign in</a></li>
+            <li style ="float:right"><a href ="{% url 'home_page:register' %}">Create account</a></li>
+        </ul>
+        <p>
+            <br>
+            
+				<form action="/" method="post">
+					{% csrf_token %}
+					{{ form }}
+					<input type="submit" value="Submit">
+				</form>
+            </form>
+        </p>
+    </body>
+</html>
+
+<style>
+    li {
+  float:left;
+}
+
+
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #317393;
+}
+
+li a{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.active{
+  background-color:#4CAF50;
+}
+</style>
