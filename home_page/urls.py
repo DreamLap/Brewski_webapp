@@ -7,9 +7,8 @@ from . import views
 app_name = 'home_page'
 
 urlpatterns = [
-	  path(''views.get_name, name = 'create_journal'),
+	url('create_journal/', views.create_journal, name = 'create_journal'),
     url('login/', views.login, name = 'login'),
-    url('get_name/', views.get_name, name = 'get_name'),
     url('register/', views.register, name = 'register'),
     url('', views.home_page),
 ]

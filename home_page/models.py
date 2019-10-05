@@ -1,5 +1,5 @@
 from django.db import models
-import .DBManager
+from .DBManager import DBManager
 # Create your models here.
 
 
