@@ -28,3 +28,8 @@ def create_journal(request):
         form = JournalForm()
 
     return render(request, 'Create_Journal.html', {'form': form})
+
+	
+	
+	
+	

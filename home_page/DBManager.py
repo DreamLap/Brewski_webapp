@@ -17,6 +17,7 @@ class DBManager:
                                aws_access_key_id='AKIAJTNALKALUKKL3XUQ',
                                aws_secret_access_key='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')
    __table = __dynamodb.Table('users')
+   
    @staticmethod 
    def getInstance():
       """ Static access method. """
@@ -44,7 +45,10 @@ class DBManager:
    def saveItem(self, item, table):
        self.__table =  self.__dynamodb.Table(table)
        self.__table.put_item(Item=item)
-
+    
+   def deleteItem(self,item,table):
+       self.__table =  self.__dynamodb.Table(table)
+       self.__table.delete_item(Item=item)
 
   
    def __init__(self):
