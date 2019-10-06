@@ -14,12 +14,15 @@ def index(request):
 
 =======
 def home_page(request):
+    print('home_page request')
     return render(request, 'home_page.html')
 
 def login(request):
+    print('login request')
     return render(request, 'login.html')
 
 def register(request):
+    print('register request')
     form = UserCreationForm()
     return render(request, 'register.html', {'form': form})
 
