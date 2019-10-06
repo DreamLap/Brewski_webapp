@@ -5,6 +5,7 @@
         {% endblock %}
         <h1 align = "center">Welcome!</h1>
          <ul>
+<<<<<<< HEAD
              <li><a href ="#home">Home</a></li>
              <li><a href ="#profile">Profile</a></li>
              <li style ="float:right"><a href ="#about">About</a></li>
@@ -14,6 +15,17 @@
          <img src="{% static 'journal/brewjournal.png' %}" alt="Brewski logo"/>
 
         
+=======
+            <li><a href ="/">Home</a></li>
+            <li><a href ="#profile">Profile</a></li>
+            <li><a href ="{% url 'home_page:get_name' %}">Create journal</a></li>
+            <li style ="float:right"><a href ="#about">About</a></li>
+            <li style ="float:right"><a href ="{% url 'home_page:login' %}">Sign in</a></li>
+            <li style ="float:right"><a href ="{% url 'home_page:register' %}">Create account</a></li>
+         </ul>
+
+
+>>>>>>> 64011ffbbf0288e0cafdde3c0d28eafb71021200
     </head>
     <body>
         {% block body %}
@@ -26,7 +38,10 @@
     li {
         float:left;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 64011ffbbf0288e0cafdde3c0d28eafb71021200
     
     ul{
         list-style-type: none;
@@ -35,7 +50,10 @@
         overflow: hidden;
         background-color: #317393;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 64011ffbbf0288e0cafdde3c0d28eafb71021200
     li a{
         display: block;
         color: white;
@@ -43,7 +61,10 @@
         padding: 14px 16px;
         text-decoration: none;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 64011ffbbf0288e0cafdde3c0d28eafb71021200
     .active{
         background-color:#4CAF50;
     }

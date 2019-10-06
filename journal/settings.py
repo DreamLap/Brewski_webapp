@@ -25,17 +25,24 @@ SECRET_KEY = 'irne7tohn^@u3=afkj#!th=9l6z!u5+_%30i7(#+h9_uv)&*02'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+<<<<<<< HEAD
 
 ALLOWED_HOSTS = ['journal-env.wbijmm3d6d.us-west-2.elasticbeanstalk.com', '127.0.0.1']
 
 ALLOWED_HOSTS = ['brewski-app.5vns5knpx3.us-west-2.elasticbeanstalk.com', '127.0.0.1']
 
+=======
+ALLOWED_HOSTS = ['brewski-app.5vns5knpx3.us-west-2.elasticbeanstalk.com', '127.0.0.1']
+>>>>>>> 64011ffbbf0288e0cafdde3c0d28eafb71021200
 
 
 # Application definition
 
 INSTALLED_APPS = [
+<<<<<<< HEAD
 
+=======
+>>>>>>> 64011ffbbf0288e0cafdde3c0d28eafb71021200
     'home_page',
     'django.contrib.admin',
     'django.contrib.auth',
