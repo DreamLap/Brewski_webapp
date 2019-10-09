@@ -7,19 +7,17 @@ import boto3
   
 # Create your views here.
 
-<<<<<<< HEAD
 def index(request):
     return render(request, 'home_page/home_page.html')
 
 
-=======
 def home_page(request):
     print('home_page request')
     return render(request, 'home_page.html')
 
-def login(request):
-    print('login request')
-    return render(request, 'login.html')
+#def login(request):
+#    print('login request')
+#    return render(request, 'login.html')
 
 def register(request):
     print('register request')
@@ -43,4 +41,3 @@ def create_journal(request):
         form = JournalForm()
 
     return render(request, 'Create_Journal.html', {'form': form})
->>>>>>> 64011ffbbf0288e0cafdde3c0d28eafb71021200

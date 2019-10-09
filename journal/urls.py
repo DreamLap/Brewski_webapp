@@ -16,7 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls import url, include
-<<<<<<< HEAD
 
 
 urlpatterns = [
@@ -24,10 +23,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #path('home_page/', include('home_page.urls')),
     url(r'^home_page/', include('home_page.urls')),
-=======
+]
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url('', include('home_page.urls', namespace = "home_page")),
->>>>>>> 64011ffbbf0288e0cafdde3c0d28eafb71021200
 ]
