@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from .forms import JournalForm
 from .models import create_journal as cj
+from .models import register_user
 import boto3
   
 # Create your views here.
@@ -15,6 +16,11 @@ def login(request):
 
 def register(request):
     form = UserCreationForm()
+	if request.method == 'POST':
+		form = UserCreationForm(request.POST)
+		if form.is_valid():
+			register_user(form.username, form.password1)
+			return HttpResponseRedirect('login.html')
     return render(request, 'register.html', {'form': form})
 
 def create_journal(request):
@@ -34,3 +40,8 @@ def create_journal(request):
         form = JournalForm()
 
     return render(request, 'Create_Journal.html', {'form': form})
+
+	
+	
+	
+	
