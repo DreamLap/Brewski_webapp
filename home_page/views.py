@@ -7,13 +7,17 @@ import boto3
   
 # Create your views here.
 
+def index(request):
+    return render(request, 'home_page/home_page.html')
+
+
 def home_page(request):
     print('home_page request')
     return render(request, 'home_page.html')
 
-def login(request):
-    print('login request')
-    return render(request, 'login.html')
+#def login(request):
+#    print('login request')
+#    return render(request, 'login.html')
 
 def register(request):
     print('register request')
