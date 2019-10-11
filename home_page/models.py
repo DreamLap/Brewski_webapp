@@ -9,7 +9,7 @@ def create_journal(item):
 	Item={
 					'JournalID': item,
 		}
-	DB.saveItem(Item,'Journal')
+	DB.saveItem(Item,'Brewjournal')
 	
 def register_user(username, password):
 	DB = DBManager.getInstance()
