@@ -40,10 +40,9 @@ class DBManager:
        self.__table =  self.__db[table]
        response = self.__table.find_one(key)
        return response
-   
-    
     
    def saveItem(self, item, table):
+       print('hit dbsaveiteam')
        self.__table =  self.__db[table]
        self.__table.insert_one(item)
     

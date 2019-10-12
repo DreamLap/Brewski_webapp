@@ -1,36 +1,41 @@
 {% load static %}
 <html>
-    <head>
-        {% block head %}
-        <title> Base </title>
-        {% endblock %}
-        <h1 align = "center">Welcome!
-        <img src = "{% static 'images/brewjournal.png' %}" type = "image" style="width:60px;height:100px;"></h1>
-        <ul>
-            <li><a href ="/">Home</a></li>
-            <li><a href ="#profile">Profile</a></li>
-            <li><a href ="/create_journal/">Create journal</a></li>
-            <li style ="float:right"><a href ="#about">About</a></li>
-            <li style ="float:right"><a href ="/login/">Sign in</a></li>
-            <li style ="float:right"><a href ="/register/">Create account</a></li>
-        </ul>
+
+<head>
+    {% block head %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title> Base </title>
+    {% endblock %}
+    <h1 align="center">Welcome!
+        <img src="{% static 'images/brewjournal.png' %}" type="image" style="width:60px;height:100px;"></h1>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="/create_journal/">Create journal</a></li>
+        <li style="float:right"><a href="#about">About</a></li>
+        <li style="float:right"><a href="/login/">Sign in</a></li>
+        <li style="float:right"><a href="/register/">Create account</a></li>
+    </ul>
 
 
-    </head>
-    <body>
-        {% block body %}
-         <h1>Base</h1>
-        {% endblock %}
-    </body>
+</head>
+
+<body>
+    {% block body %}
+    <h1>Base</h1>
+    {% endblock %}
+</body>
+
 </html>
 
 <style>
     li {
-        float:left;
+        float: left;
     }
 
-    
-    ul{
+
+    ul {
         list-style-type: none;
         margin: 0;
         padding: 0;
@@ -38,7 +43,7 @@
         background-color: #317393;
     }
 
-    li a{
+    li a {
         display: block;
         color: white;
         text-align: center;
@@ -46,7 +51,7 @@
         text-decoration: none;
     }
 
-    .active{
-        background-color:#4CAF50;
+    .active {
+        background-color: #4CAF50;
     }
 </style>
