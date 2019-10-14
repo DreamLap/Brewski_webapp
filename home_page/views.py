@@ -1,7 +1,8 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
-from .forms import JournalForm
+from .forms import JournalFormSection1
+from .forms import JournalFormSection2
 from .models import create_journal as cj
 from .models import register_user
 import boto3
@@ -31,21 +32,26 @@ def register(request):
     return render(request, 'register.html', {'form': form})
 
 def create_journal(request):
-    print('crete_journal')
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
-        print('post recieve')
         # create a form instance and populate it with data from the request:
-        form = JournalForm(request.POST)
+        form1 = JournalFormSection1(request.POST)
+        form2 = JournalFormSection2(request.POST)
         # check whether it's valid:
-        if form.is_valid():
+        if form1.is_valid() and form2.is_valid():
             # process the data in form.cleaned_data as required
-            cj(form.cleaned_data)
+            form1_clean = form1.cleaned_data
+            form2_clean = form2.cleaned_data
+            combine_form_clean = {}
+            combine_form_clean.update(form1_clean)
+            combine_form_clean.update(form2_clean)
+            cj(combine_form_clean)
             # redirect to a new URL:
             return HttpResponseRedirect('/')
 
     # if a GET (or any other method) we'll create a blank form
     else:
-        form = JournalForm()
+        form1 = JournalFormSection1()
+        form2 = JournalFormSection2()
 
-    return render(request, 'Create_Journal.html', {'form': form})
+    return render(request, 'Create_Journal.html', {'form1': form1, 'form2': form2})

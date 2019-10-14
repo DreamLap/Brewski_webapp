@@ -15,16 +15,38 @@
   <h1 align="center">Create journal entry</h1>
   <ul>
     <li><a href="/">Home</a></li>
-    <li><a href="#profile">Profile</a></li>
+    <li><a href="/profile/">Profile</a></li>
     <li><a href="/create_journal/">Create journal</a></li>
     <li style="float:right"><a href="#about">About</a></li>
     <li style="float:right"><a href="/login/">Sign in</a></li>
     <li style="float:right"><a href="/register/">Create account</a></li>
   </ul>
-  
+
   <form method="POST">
     {% csrf_token %}
-    {{ form }}
+    <p>
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#section1" aria-expanded="false"
+        aria-controls="collapseExample">
+        Section 1 inputs
+      </button>
+    </p>
+    <div class="collapse" id="section1">
+      <div class="card card-body">
+        {{ form1 }}
+      </div>
+    </div>
+
+    <p>
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#section2" aria-expanded="false"
+        aria-controls="collapseExample">
+        Section 2 inputs
+      </button>
+    </p>
+    <div class="collapse" id="section2">
+      <div class="card card-body">
+        {{ form2 }}
+      </div>
+    </div>
     <input type="submit" value="Submit">
   </form>
 </body>
