@@ -49,7 +49,11 @@ class DBManager:
        self.__table =  self.__db[table]
        self.__table.delete_one(item)
 
-  
+   #def getAllJournals(self):
+      #mycol = self.__db["Journal"]
+      #mydoc = mycol.find({"JournalID.hop_name" : "try num 2"})
+      
+
    def __init__(self):
       """ Virtually private constructor. """
       if DBManager.__instance != None:

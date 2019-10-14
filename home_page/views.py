@@ -1,6 +1,8 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login, authenticate, logout
+from .DBManager import DBManager
 from .forms import JournalFormSection1
 from .forms import JournalFormSection2
 from .models import create_journal as cj
@@ -15,20 +17,35 @@ def index(request):
 
 def home_page(request):
     return render(request, 'home_page.html')
+    #DB = DBManager.getInstance()
+    #data = DB.getAllJournals()
+    #print(data)
+    #return render(request, 'home_page.html', {"data": data})
 
 #def login(request):
 #    print('login request')
-#    return render(request, 'login.html')
+#   return render(request, 'login.html')
+
+
+def logout_view(request):
+    print('logout hit')
+    logout(request)
+    return HttpResponseRedirect('/')
 
 def register(request):
-    form = UserCreationForm()
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
+            form.save()
             username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            register_user(username=username, password=password)
-            return HttpResponseRedirect('login.html')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('/')
+
+    else:
+        form = UserCreationForm()
+
     return render(request, 'register.html', {'form': form})
 
 def create_journal(request):
