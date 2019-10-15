@@ -8,19 +8,17 @@
 </head>
 
 <body>
-  <h1 align="center">Welcome to the Brewing Journal!
+  <h1 align="center">Profile page
     <img src="{% static 'images/brewjournal.png' %}" type="image" style="width:60px;height:100px;">
   </h1>
   <ul>
     <li><a href="/">Home</a></li>
     <li><a href="/profile/">Profile</a></li>
     <li><a href="/create_journal/">Create journal</a></li>
-    <li style="float:right"><a href="/logout/">Logout</a></li>
     <li style="float:right"><a href="#about">About</a></li>
     <li style="float:right"><a href="/login/">Sign in</a></li>
     <li style="float:right"><a href="/register/">Create account</a></li>
   </ul>
-  {{request.user.username}}
 </body>
 
 </html>
