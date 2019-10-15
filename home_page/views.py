@@ -17,9 +17,10 @@ def index(request):
 
 def home_page(request):
     return render(request, 'home_page.html')
+    
+    #remove these lines for presentation demo
     #DB = DBManager.getInstance()
     #data = DB.getAllJournals()
-    #print(data)
     #return render(request, 'home_page.html', {"data": data})
 
 #def login(request):
