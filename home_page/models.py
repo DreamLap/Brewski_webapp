@@ -1,5 +1,5 @@
 from django.db import models
-import .DBManager
+from .DBManager import DBManager
 # Create your models here.
 
 
@@ -9,7 +9,7 @@ def create_journal(item):
 	Item={
 					'JournalID': item,
 		}
-	DB.saveItem(Item,'Journal')
+	DB.saveItem(Item,'Brewjournal')
 	
 def register_user(username, password):
 	DB = DBManager.getInstance()
