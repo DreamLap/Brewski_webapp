@@ -30,6 +30,7 @@ def create_journal(request):
             cj(form.cleaned_data)
             # redirect to a new URL:
             form = JournalEntryForm()
+            #return HttpResponse(open('home_page/test_brew.xml').read())
             return render(request, 'journal_entry.html', {'form': form})
             #return HttpResponseRedirect('home_page.html')
 
