@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import JournalForm
 from .models import create_journal as cj
 from .models import register_user
-import boto3
+
   
 # Create your views here.
 

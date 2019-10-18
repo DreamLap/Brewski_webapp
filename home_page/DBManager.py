@@ -59,6 +59,3 @@ class DBManager:
       else:
          DBManager.__instance = self
     
-
-
-    
