@@ -49,13 +49,13 @@ class DBManager:
        self.__table =  self.__db[table]
        self.__table.delete_one(item)
 
-  #def getAllJournals(self):
-      #mycol = self.__db["Journal"]
-      #mydoc = mycol.find()
-      #my_list = []
-      #for x in mydoc:
-      #   my_list.append(x)
-      #return my_list
+   def getAllJournals(self):
+      mycol = self.__db["Journal"]
+      mydoc = mycol.find()
+      my_list = []
+      for x in mydoc:
+         my_list.append(x)
+      return my_list
       
 
    def __init__(self):

@@ -16,12 +16,11 @@ def index(request):
 
 
 def home_page(request):
-    return render(request, 'home_page.html')
+    #return render(request, 'home_page.html')
     
-    #remove these lines for presentation demo
-    #DB = DBManager.getInstance()
-    #data = DB.getAllJournals()
-    #return render(request, 'home_page.html', {"data": data})
+    DB = DBManager.getInstance()
+    data = DB.getAllJournals()
+    return render(request, 'home_page.html', {'data': data})
 
 #def login(request):
 #    print('login request')
@@ -31,7 +30,7 @@ def home_page(request):
 def logout_view(request):
     print('logout hit')
     logout(request)
-    return HttpResponseRedirect('/')
+    return render(request, 'home_page.html')
 
 def register(request):
     if request.method == 'POST':
