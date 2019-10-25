@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
-from .forms import JournalForm
+from .forms import JournalForm, JournalEntryForm
 from .models import create_journal as cj
 from .models import register_user
 
@@ -29,7 +29,10 @@ def create_journal(request):
             # process the data in form.cleaned_data as required
             cj(form.cleaned_data)
             # redirect to a new URL:
-            return HttpResponseRedirect('home_page.html')
+            form = JournalEntryForm()
+            #return HttpResponse(open('home_page/test_brew.xml').read())
+            return render(request, 'journal_entry.html', {'form': form})
+            #return HttpResponseRedirect('home_page.html')
 
     # if a GET (or any other method) we'll create a blank form
     else:
@@ -37,6 +40,8 @@ def create_journal(request):
 
     return render(request, 'Create_Journal.html', {'form': form})
 
+
+	
 	
 	
 	
