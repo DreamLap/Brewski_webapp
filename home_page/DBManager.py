@@ -40,6 +40,7 @@ class DBManager:
        self.__table =  self.__db[table]
        response = self.__table.find_one(key)
        return response
+
     
    def saveItem(self, item, table):
        self.__table =  self.__db[table]
@@ -49,10 +50,16 @@ class DBManager:
        self.__table =  self.__db[table]
        self.__table.delete_one(item)
 
-   #def getAllJournals(self):
-      #mycol = self.__db["Journal"]
-      #mydoc = mycol.find({"JournalID.hop_name" : "try num 2"})
+
+   def getAllJournals(self):
+      mycol = self.__db["Journal"]
+      mydoc = mycol.find()
+      my_list = []
+      for x in mydoc:
+         my_list.append(x)
+      return my_list
       
+
 
    def __init__(self):
       """ Virtually private constructor. """
@@ -60,7 +67,4 @@ class DBManager:
          raise Exception("This class is a singleton!")
       else:
          DBManager.__instance = self
-    
 
-
-    

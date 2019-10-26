@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
+
 from django.contrib.auth import login, authenticate, logout
 from .DBManager import DBManager
 from .forms import JournalFormSection1
@@ -8,6 +9,7 @@ from .forms import JournalFormSection2
 from .models import create_journal as cj
 from .models import register_user
 import boto3
+
   
 # Create your views here.
 
@@ -16,11 +18,11 @@ def index(request):
 
 
 def home_page(request):
-    return render(request, 'home_page.html')
-    #DB = DBManager.getInstance()
-    #data = DB.getAllJournals()
-    #print(data)
-    #return render(request, 'home_page.html', {"data": data})
+    #return render(request, 'home_page.html')
+    is_logged_in = True
+    DB = DBManager.getInstance()
+    data = DB.getAllJournals()
+    return render(request, 'home_page.html', {'data': data,'is_logged_in' : is_logged_in})
 
 #def login(request):
 #    print('login request')
@@ -30,9 +32,10 @@ def home_page(request):
 def logout_view(request):
     print('logout hit')
     logout(request)
-    return HttpResponseRedirect('/')
+    return render(request, 'home_page.html')
 
 def register(request):
+
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -49,6 +52,8 @@ def register(request):
     return render(request, 'register.html', {'form': form})
 
 def create_journal(request):
+    
+
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -64,11 +69,15 @@ def create_journal(request):
             combine_form_clean.update(form2_clean)
             cj(combine_form_clean)
             # redirect to a new URL:
+
             return HttpResponseRedirect('/')
+
 
     # if a GET (or any other method) we'll create a blank form
     else:
         form1 = JournalFormSection1()
         form2 = JournalFormSection2()
 
+
     return render(request, 'Create_Journal.html', {'form1': form1, 'form2': form2})
+

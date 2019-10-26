@@ -1,9 +1,12 @@
 {% load static %}
 <html>
 
+
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <title> Home page </title>
 </head>
 
@@ -15,13 +18,37 @@
     <li><a href="/">Home</a></li>
     <li><a href="/profile/">Profile</a></li>
     <li><a href="/create_journal/">Create journal</a></li>
-    <li style="float:right"><a href="/logout/">Logout</a></li>
     <li style="float:right"><a href="#about">About</a></li>
+	{% if not user.is_authenticated %}
     <li style="float:right"><a href="/login/">Sign in</a></li>
     <li style="float:right"><a href="/register/">Create account</a></li>
+	{% else %}
+	<li style="float:right"><a href="/logout/">Log Out</a></li>
+	{% endif %}
   </ul>
-  {{request.user.username}}
+
+
+
+    {{request.user.username}}
+    {% for journals in data %}
+
+
+    <p>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#section1{{forloop.counter}}" aria-expanded="false"
+          aria-controls="collapseExample">
+          {{journals.JournalID.name_of_brew}}
+        </button>
+      </p>
+      <div class="collapse" id="section1{{forloop.counter}}">
+        <div class="card card-body">
+            hop name:{{journals.JournalID.hop_name}}
+            <br>
+            hop alpha:{{journals.JournalID.hop_alpha}}
+        </div>
+      </div>
+    {% endfor %}
 </body>
+
 
 </html>
 
@@ -48,7 +75,9 @@
     text-decoration: none;
   }
 
-  .active {
-    background-color: #4CAF50;
+  table,
+  th,
+  td {
+    border: 1px solid black;
   }
 </style>
