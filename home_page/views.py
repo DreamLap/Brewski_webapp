@@ -4,8 +4,10 @@ from django.contrib.auth.forms import UserCreationForm
 
 from django.contrib.auth import login, authenticate, logout
 from .DBManager import DBManager
+from .forms import JournalFormSection0
 from .forms import JournalFormSection1
 from .forms import JournalFormSection2
+from .forms import JournalFormSection3
 from .models import create_journal as cj
 from .models import register_user
 import boto3
@@ -57,16 +59,22 @@ def create_journal(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
+        form0 = JournalFormSection0(request.POST)
         form1 = JournalFormSection1(request.POST)
         form2 = JournalFormSection2(request.POST)
+        form3 = JournalFormSection3(request.POST)
         # check whether it's valid:
-        if form1.is_valid() and form2.is_valid():
+        if form0.is_valid() and form1.is_valid() and form2.is_valid() and form3.is_valid():
             # process the data in form.cleaned_data as required
+            form0_clean = form0.cleaned_data
             form1_clean = form1.cleaned_data
             form2_clean = form2.cleaned_data
+            form3_clean = form3.cleaned_data
             combine_form_clean = {}
+            combine_form_clean.update(form0_clean)
             combine_form_clean.update(form1_clean)
             combine_form_clean.update(form2_clean)
+            combine_form_clean.update(form3_clean)
             cj(combine_form_clean)
             # redirect to a new URL:
 
@@ -75,9 +83,11 @@ def create_journal(request):
 
     # if a GET (or any other method) we'll create a blank form
     else:
+        form0 = JournalFormSection0()
         form1 = JournalFormSection1()
         form2 = JournalFormSection2()
+        form3 = JournalFormSection3()
 
 
-    return render(request, 'Create_Journal.html', {'form1': form1, 'form2': form2})
+    return render(request, 'Create_Journal.html', {'form0': form0, 'form1': form1, 'form2': form2, 'form3': form3})
 
