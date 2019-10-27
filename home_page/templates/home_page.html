@@ -41,7 +41,18 @@
       </p>
       <div class="collapse" id="section1{{forloop.counter}}">
         <div class="card card-body">
+<<<<<<< Updated upstream
             hop alpha:{{journals.JournalID.Overall_notes}}
+=======
+            hop name:{{journals.JournalID.hop_name}}
+            {% if journals.JournalID.hop_name == "try num 2" %}
+            123123asdasd
+            {% endif %}
+            <br>
+            hop alpha:{{journals.JournalID.hop_alpha}}
+            <br>
+            Journal ID:{{journals.id}}
+>>>>>>> Stashed changes
         </div>
       </div>
     {% endfor %}
