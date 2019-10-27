@@ -55,8 +55,11 @@ class DBManager:
       mycol = self.__db["Journal"]
       mydoc = mycol.find()
       my_list = []
+      counter = 0
       for x in mydoc:
+         x['id'] = x.pop('_id')
          my_list.append(x)
+      #print(my_list)
       return my_list
       
 

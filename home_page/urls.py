@@ -11,7 +11,7 @@ urlpatterns = [
     url('logout/', views.logout_view, name = 'logout_view'),
 	url('create_journal/', views.create_journal, name = 'create_journal'),
     url('login/', LoginView.as_view(template_name='login.html'), name = 'login'),
-
+    path('edit_journal/<int:journal_id>/', views.edit_journal),
     url('register/', views.register, name = 'register'),
     url('', views.home_page),
 ]

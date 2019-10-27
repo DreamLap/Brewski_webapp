@@ -22,6 +22,8 @@ def home_page(request):
     is_logged_in = True
     DB = DBManager.getInstance()
     data = DB.getAllJournals()
+    current_user = request.user
+    #print(current_user)
     return render(request, 'home_page.html', {'data': data,'is_logged_in' : is_logged_in})
 
 #def login(request):
@@ -33,6 +35,9 @@ def logout_view(request):
     print('logout hit')
     logout(request)
     return render(request, 'home_page.html')
+
+def edit_journal(request):
+    print('attempt to edit journal')
 
 def register(request):
 
