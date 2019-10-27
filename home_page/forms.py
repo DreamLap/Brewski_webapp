@@ -1,9 +1,6 @@
 from django import forms
 
-'''
-class JournalForm(forms.Form):
-    journal_name = forms.CharField(label='JournalName', max_length=100)
-'''
+
 	
 class JournalFormSection1(forms.Form):
 	hop_name = forms.CharField(max_length=100)
