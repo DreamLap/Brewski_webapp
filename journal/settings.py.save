@@ -27,17 +27,11 @@ DEBUG = True
 
 
 ALLOWED_HOSTS = ['journal-env.wbijmm3d6d.us-west-2.elasticbeanstalk.com', '127.0.0.1']
-
 ALLOWED_HOSTS = ['brewski-app.5vns5knpx3.us-west-2.elasticbeanstalk.com', '127.0.0.1']
-
-
-ALLOWED_HOSTS = ['brewski-app.5vns5knpx3.us-west-2.elasticbeanstalk.com', '127.0.0.1']
-
 
 # Application definition
 
 INSTALLED_APPS = [
-
     'home_page',
     'django.contrib.admin',
     'django.contrib.auth',
