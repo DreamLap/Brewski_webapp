@@ -21,6 +21,7 @@ def index(request):
 
 def home_page(request):
     #return render(request, 'home_page.html')
+    print(request.user)
     is_logged_in = True
     DB = DBManager.getInstance()
     data = DB.getAllJournals()
@@ -30,6 +31,8 @@ def home_page(request):
 #    print('login request')
 #   return render(request, 'login.html')
 
+def edit_journal(request):
+    print('attempt edit')
 
 def logout_view(request):
     print('logout hit')
@@ -75,7 +78,8 @@ def create_journal(request):
             combine_form_clean.update(form1_clean)
             combine_form_clean.update(form2_clean)
             combine_form_clean.update(form3_clean)
-            cj(combine_form_clean)
+            print(request.user)
+            cj(combine_form_clean, str(request.user))
             # redirect to a new URL:
 
             return HttpResponseRedirect('/')
@@ -83,6 +87,7 @@ def create_journal(request):
 
     # if a GET (or any other method) we'll create a blank form
     else:
+        print(request.user)
         form0 = JournalFormSection0()
         form1 = JournalFormSection1()
         form2 = JournalFormSection2()
