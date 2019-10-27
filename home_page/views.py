@@ -19,8 +19,15 @@ def index(request):
     return render(request, 'home_page/home_page.html')
 
 
+def profile_page(request):
+    is_logged_in = True
+    DB = DBManager.getInstance()
+    data = DB.getAllJournals()
+    return render(request, 'profile.html', {'data': data,'is_logged_in' : is_logged_in})
+
 def home_page(request):
     #return render(request, 'home_page.html')
+    print('home page call')
     print(request.user)
     is_logged_in = True
     DB = DBManager.getInstance()
@@ -57,7 +64,7 @@ def register(request):
     return render(request, 'register.html', {'form': form})
 
 def create_journal(request):
-    
+    print('create journal call')
 
     # if this is a POST request we need to process the form data
     if request.method == 'POST':

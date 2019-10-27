@@ -41,14 +41,11 @@
       </p>
       <div class="collapse" id="section1{{forloop.counter}}">
         <div class="card card-body">
-            hop name:{{journals.JournalID.hop_name}}
-            {% if journals.JournalID.hop_name == "try num 2" %}
-            123123asdasd
-            {% endif %}
+            Link:  <a href="/journal/{{journals.id}}">{{journals.JournalID.Name_of_brew}}</a> 
             <br>
-            hop alpha:{{journals.JournalID.hop_alpha}}
+            Name of creator: {{journals.UserID}}
             <br>
-            Journal ID:{{journals.id}}
+            Journal ID: {{journals.id}}
         </div>
       </div>
     {% endfor %}
