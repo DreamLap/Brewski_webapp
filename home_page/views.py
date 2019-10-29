@@ -15,10 +15,6 @@ import boto3
   
 # Create your views here.
 
-def index(request):
-    return render(request, 'home_page/home_page.html')
-
-
 def profile_page(request):
     is_logged_in = True
     DB = DBManager.getInstance()
@@ -38,8 +34,23 @@ def home_page(request):
 #    print('login request')
 #   return render(request, 'login.html')
 
-def edit_journal(request):
-    print('attempt edit')
+def edit_journal(request, journal_id):
+    DB = DBManager.getInstance()
+    data = DB.getAllJournals()
+    for entry in data:
+        #print(entry['id'])
+        #found a match in DB
+        if journal_id == str(entry['id']):
+            #auth that the user is able to edit
+            if str(request.user) == str(entry['UserID']):
+                print('you can edit this journal: ' , entry['id'])
+                #return render(request, 'edit_journal.html')
+            #Journal exist but user isn't doesn't match UserID
+            else:
+                print('You dont have edit permissions')
+
+    #no journal exist to edit
+    return render(request, 'home_page.html')
 
 def logout_view(request):
     print('logout hit')
