@@ -1,0 +1,85 @@
+{% load static %}
+
+
+    <!DOCTYPE html>
+    <html lang = "en">
+        <head>
+            <meta charset = "urf-8" name = "viewport" content = "width=device-width, initial-scale=1"/>
+            {% load static %}
+            <link rel = "stylesheet" type = "text/css" href = "{% static 'css/bootstrap.css' %}"/>
+            <link rel = "stylesheet" type = "text/css" href = "{% static 'css/jquery.dataTables.css' %}"/>
+
+
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <h1 align="center">Welcome!
+        <img src="{% static 'images/brewjournal.png' %}" type="image" style="width:60px;height:100px;"></h1>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/profile/">Profile</a></li>
+        <li><a href="/create_journal/">Create journal</a></li>
+        <li style="float:right"><a href="#about">About</a></li>
+		{% if not user.is_authenticated %}
+		<li style="float:right"><a href="/login/">Sign in</a></li>
+		<li style="float:right"><a href="/register/">Create account</a></li>
+		{% else %}
+	    <li style="float:right"><a href="/logout/">Log Out</a></li>
+		{% endif %}
+    </ul>
+
+        </head>
+    <body>
+
+            {% block body %}
+            {% endblock %}
+        </div>
+     
+    </body>
+    <script src = "{% static 'js/jquery-3.2.1.js' %}"></script>
+    <script src = "{% static 'js/jquery.dataTables.js' %}"></script>
+    <script type = "text/javascript">
+        $(document).ready(function(){
+            var table = $('#table').DataTable( {
+        		"columnDefs": [ {
+            		"targets": -1,
+            		"data": null,
+            		"defaultContent": "<button>View</button>"
+        		} ]
+        	});
+      
+        	$('#table tbody').on( 'click', 'button', function () {
+        	var data = table.row( $(this).parents('tr') ).data();
+        	alert( "Name of this brew is: "+ data[ 0 ] );
+    		} );
+        });
+
+    </script>
+    </html>
+
+    <style>
+    li {
+        float: left;
+    }
+
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #317393;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    .active {
+        background-color: #4CAF50;
+    }
+</style>
