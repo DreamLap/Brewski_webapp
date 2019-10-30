@@ -10,6 +10,8 @@ from .forms import JournalFormSection2
 from .forms import JournalFormSection3
 from .models import create_journal as cj
 from .models import register_user
+from .autofill_form import autofill_form
+
 import boto3
 
   
@@ -38,13 +40,27 @@ def edit_journal(request, journal_id):
     DB = DBManager.getInstance()
     data = DB.getAllJournals()
     for entry in data:
-        #print(entry['id'])
         #found a match in DB
         if journal_id == str(entry['id']):
             #auth that the user is able to edit
             if str(request.user) == str(entry['UserID']):
                 print('you can edit this journal: ' , entry['id'])
-                #return render(request, 'edit_journal.html')
+
+                #auto populates form with DB info
+                filled_out_form = autofill_form(entry, 0)
+                form0 = JournalFormSection0(filled_out_form)
+
+                filled_out_form = autofill_form(entry, 1)
+                form1 = JournalFormSection1(filled_out_form)
+
+                filled_out_form = autofill_form(entry, 2)
+                form2 = JournalFormSection2(filled_out_form)
+
+                filled_out_form = autofill_form(entry, 2)
+                form3 = JournalFormSection3(filled_out_form)
+
+
+                return render(request, 'edit_journal.html', {'entry': entry, 'form0': form0, 'form1': form1, 'form2': form2, 'form3': form3})
             #Journal exist but user isn't doesn't match UserID
             else:
                 print('You dont have edit permissions')
