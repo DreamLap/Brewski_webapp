@@ -6,7 +6,6 @@ def autofill_form(entry, which_form):
     if which_form == 0:
         data.update({'Name_of_brew': entry['JournalID']['Name_of_brew']})
         data.update({'Overall_notes': entry['JournalID']['Overall_notes']})
-        print(data)
         return data
 
     elif which_form == 1:
@@ -30,7 +29,6 @@ def autofill_form(entry, which_form):
         data.update({'Sparge_time': entry['JournalID']['Sparge_time']})
         data.update({'Recirc_time': entry['JournalID']['Recirc_time']})
         data.update({'Mash_notes': entry['JournalID']['Mash_notes']})
-        print(data)
         return data
     
     elif which_form == 2:
@@ -55,6 +53,7 @@ def autofill_form(entry, which_form):
         data.update({'Whirlfloc': entry['JournalID']['Whirlfloc']})
         data.update({'Whirlpool_time': entry['JournalID']['Whirlpool_time']})
         data.update({'Boil_notes': entry['JournalID']['Boil_notes']})
+        return data
     
     elif which_form == 3:
         data.update({'Yeast_name': entry['JournalID']['Yeast_name']})
@@ -77,4 +76,5 @@ def autofill_form(entry, which_form):
         data.update({'Lager_temp': entry['JournalID']['Lager_temp']})
         data.update({'Lager_time': entry['JournalID']['Lager_time']})
         data.update({'Fermentation_notes': entry['JournalID']['Fermentation_notes']})
+        return data
 
