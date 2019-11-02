@@ -7,6 +7,7 @@ Created on Thu Sep 12 17:18:43 2019
 
 import pymongo
 from pymongo import MongoClient
+from bson import ObjectId
   
 # Get the service resource.
 # table is the name of the table the instance will be working on
@@ -55,13 +56,21 @@ class DBManager:
       mycol = self.__db["Journal"]
       mydoc = mycol.find()
       my_list = []
-      counter = 0
       for x in mydoc:
          x['id'] = x.pop('_id')
          my_list.append(x)
       #print(my_list)
       return my_list
-      
+   
+   def editItem(self, item, table, journal_id):
+      print('----')
+      print('item: ', item)
+      print('table: ', table )
+      print('journal_id: ', journal_id )
+      print('-------')
+
+      self.__table =  self.__db[table]
+      self.__table.find_one_and_replace( {"_id" : ObjectId(journal_id)}, item, upsert = True )
 
 
    def __init__(self):
