@@ -1,0 +1,169 @@
+{% load static %}
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <title> {{request.user.username}} </title>
+</head>
+
+<body>
+  <h1 align="center">Journal page
+    <img src="{% static 'images/brewjournal.png' %}" type="image" style="width:60px;height:100px;">
+  </h1>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/profile/">Profile</a></li>
+    <li><a href="/create_journal/">Create journal</a></li>
+    <li style="float:right"><a href="#about">About</a></li>
+    {% if not user.is_authenticated %}
+    <li style="float:right"><a href="/login/">Sign in</a></li>
+    <li style="float:right"><a href="/register/">Create account</a></li>
+    {% else %}
+    <li style="float:right"><a href="/logout/">Log Out</a></li>
+    {% endif %}
+  </ul>
+  
+
+  {% for journals in data %}
+
+    {% ifequal recipe_name journals.JournalID.Name_of_brew %}
+      Creator:  {{journals.UserID}}
+      <br>
+      Recipe Name:  {{journals.JournalID.Name_of_brew}}
+      <br>
+      Recipe ID:  {{journals.id}}
+      <br>
+      Notes:  {{journals.JournalID.Overall_notes}}
+      <br>
+      Water Volume: {{journals.JournalID.Water_Volume}}
+      <br>
+      Step Mash 1 temp: {{journals.JournalID.Step_Mash_1_temp}}
+      <br>
+      Step Mash 1 time: {{journals.JournalID.Step_Mash_1_time}}
+      <br>
+      Step Mash 2 temp: {{journals.JournalID.Step_Mash_2_temp}}
+      <br>
+      Step Mash 2 time: {{journals.JournalID.Step_Mash_2_time}}
+      <br>
+      Step Mash 3 temp: {{journals.JournalID.Step_Mash_3_temp}}
+      <br>
+      Step Mash 3 time: {{journals.JournalID.Step_Mash_3_time}}
+      <br>
+      Step Mash 4 temp: {{journals.JournalID.Step_Mash_4_temp}}
+      <br>
+      Step Mash 4 time: {{journals.JournalID.Step_Mash_4_time}}
+      <br>
+      Step Mash 5 temp: {{journals.JournalID.Step_Mash_5_temp}}
+      <br>
+      Step Mash 5 time: {{journals.JournalID.Step_Mash_5_time}}
+      <br>
+      Mash out: {{journals.JournalID.Mash_out}}
+      <br>
+      Sparge Temp: {{journals.JournalID.Sparge_temp}}
+      <br>
+      Sparge Time: {{journals.JournalID.Sparge_time}}
+      <br>
+      Recirc Time: {{journals.JournalID.Recirc_time}}
+      <br>
+      Mash Notes: {{journals.JournalID.Mash_notes}}
+      <br>
+      Starting Volume: {{journals.JournalID.Start_vol}}
+      <br>
+      Ending Volume: {{journals.JournalID.End_vol}}
+      <br>
+      Hop Name 1: {{journals.JournalID.hop_name_1}}
+      <br>
+      Hop Amount 1: {{journals.JournalID.hop_amount_1}}
+      <br>
+      Hop Alpha Acid 1: {{journals.JournalID.hop_alpha_acid_1}}
+      <br>
+      Hop Name 2: {{journals.JournalID.hop_name_2}}
+      <br>
+      Hop Amount 2: {{journals.JournalID.hop_amount_2}}
+      <br>
+      Hop Alpha Acid 2: {{journals.JournalID.hop_alpha_acid_2}}
+      <br>
+      Hop Name 3: {{journals.JournalID.hop_name_3}}
+      <br>
+      Hop Amount 3: {{journals.JournalID.hop_amount_3}}
+      <br>
+      Hop Alpha Acid 3: {{journals.JournalID.hop_alpha_acid_3}}
+      <br>
+      whirlfloc: {{journals.JournalID.whirlfloc}}
+      <br>
+      Whirlpool_time: {{journals.JournalID.Whirlpool_time}}
+      <br>
+      Boil notes: {{journals.JournalID.Boil_notes}}
+      <br>
+      Yeast Name: {{journals.JournalID.Yeast_name}}
+      <br>
+      Yeast Amount: {{journals.JournalID.Yeast_amount}}
+      <br>
+      Start Gravity: {{journals.JournalID.Start_gravity}}
+      <br>
+      Temp 1: {{journals.JournalID.temp_1}}
+      <br>
+      Time 1: {{journals.JournalID.time_1}}
+      <br>
+      End Gravity 1: {{journals.JournalID.End_gravity_1}}
+      <br>
+      Temp 2{{journals.JournalID.temp_2}}
+      <br>
+      Time 2: {{journals.JournalID.time_2}
+      <br>
+      End Gravity 2: {{journals.JournalID.End_gravity_2}}
+      <br>
+      Temp 3 {{journals.JournalID.temp_3}}
+      <br>
+      Time 3: {{journals.JournalID.time_3}}
+      <br>
+      End Gravity 3: {{journals.JournalID.End_gravity_3}}
+      <br>
+      ABV: {{journals.JournalID.ABV}}
+      <br>
+      Larger Temp: {{journals.JournalID.Lager_temp}}
+      <br>
+      Larger Time: {{journals.JournalID.Lager_time}}
+      <br>
+      Fermentation Notes: {{journals.JournalID.Fermentation_notes}}
+      <br>
+    {% endifequal %}
+  {% endfor %}
+
+</body>
+
+</html>
+
+
+<style>
+  li {
+    float: left;
+  }
+
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #317393;
+  }
+
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  .active {
+    background-color: #4CAF50;
+  }
+</style>
+
+
+  

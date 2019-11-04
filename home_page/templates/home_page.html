@@ -32,7 +32,6 @@
     {{request.user.username}}
     {% for journals in data %}
 
-
     <p>
         <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#section1{{forloop.counter}}" aria-expanded="false"
           aria-controls="collapseExample">
@@ -41,10 +40,10 @@
       </p>
       <div class="collapse" id="section1{{forloop.counter}}">
         <div class="card card-body">
-            Link:  <a href="/journal/{{journals.id}}">{{journals.JournalID.Name_of_brew}}</a> 
+            Link:  <a href="/journal_page/{{journals.JournalID.Name_of_brew}}">{{journals.JournalID.Name_of_brew}}</a> 
             <br>
             Name of creator: {{journals.UserID}}
-            <br>
+            <br>s
             Journal ID: {{journals.id}}
         </div>
       </div>
