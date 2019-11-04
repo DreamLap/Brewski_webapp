@@ -13,6 +13,6 @@ urlpatterns = [
     url('login/', LoginView.as_view(template_name='login.html'), name = 'login'),
     path('edit_journal/<str:journal_id>', views.edit_journal, name = 'edit_journal'),
     url('register/', views.register, name = 'register'),
-    path('journal_page/<str:recipe_name>', views.journal_page, name = 'journal_page'), 
+    path('journal_page/<str:recipe_id>', views.journal_page, name = 'journal_page'), 
     url('', views.home_page)
 ]

@@ -27,111 +27,105 @@
   </ul>
   
 
-  {% for journals in data %}
-
-    {% ifequal recipe_name journals.JournalID.Name_of_brew %}
-      Creator:  {{journals.UserID}}
+      Recipe Name:  {{entry.JournalID.Name_of_brew}}
       <br>
-      Recipe Name:  {{journals.JournalID.Name_of_brew}}
+      Recipe ID:  {{entry.id}}
+      <br><br>
+      Notes:  {{entry.JournalID.Overall_notes}}
+      <br><br>
+      Water Volume: {{entry.JournalID.Water_Volume}}
       <br>
-      Recipe ID:  {{journals.id}}
+      Step Mash 1 temp: {{entry.JournalID.Step_Mash_1_temp}}
       <br>
-      Notes:  {{journals.JournalID.Overall_notes}}
+      Step Mash 1 time: {{entry.JournalID.Step_Mash_1_time}}
       <br>
-      Water Volume: {{journals.JournalID.Water_Volume}}
+      Step Mash 2 temp: {{entry.JournalID.Step_Mash_2_temp}}
       <br>
-      Step Mash 1 temp: {{journals.JournalID.Step_Mash_1_temp}}
+      Step Mash 2 time: {{entry.JournalID.Step_Mash_2_time}}
       <br>
-      Step Mash 1 time: {{journals.JournalID.Step_Mash_1_time}}
+      Step Mash 3 temp: {{entry.JournalID.Step_Mash_3_temp}}
       <br>
-      Step Mash 2 temp: {{journals.JournalID.Step_Mash_2_temp}}
+      Step Mash 3 time: {{entry.JournalID.Step_Mash_3_time}}
       <br>
-      Step Mash 2 time: {{journals.JournalID.Step_Mash_2_time}}
+      Step Mash 4 temp: {{entry.JournalID.Step_Mash_4_temp}}
       <br>
-      Step Mash 3 temp: {{journals.JournalID.Step_Mash_3_temp}}
+      Step Mash 4 time: {{entry.JournalID.Step_Mash_4_time}}
       <br>
-      Step Mash 3 time: {{journals.JournalID.Step_Mash_3_time}}
+      Step Mash 5 temp: {{entry.JournalID.Step_Mash_5_temp}}
       <br>
-      Step Mash 4 temp: {{journals.JournalID.Step_Mash_4_temp}}
+      Step Mash 5 time: {{entry.JournalID.Step_Mash_5_time}}
+      <br><br>
+      Mash out: {{entry.JournalID.Mash_out}}
       <br>
-      Step Mash 4 time: {{journals.JournalID.Step_Mash_4_time}}
+      Sparge Temp: {{entry.JournalID.Sparge_temp}}
       <br>
-      Step Mash 5 temp: {{journals.JournalID.Step_Mash_5_temp}}
+      Sparge Time: {{entry.JournalID.Sparge_time}}
       <br>
-      Step Mash 5 time: {{journals.JournalID.Step_Mash_5_time}}
+      Recirc Time: {{entry.JournalID.Recirc_time}}
+      <br><br>
+      Mash Notes: {{entry.JournalID.Mash_notes}}
+      <br><br>
+      Starting Volume: {{entry.JournalID.Start_vol}}
       <br>
-      Mash out: {{journals.JournalID.Mash_out}}
+      Ending Volume: {{entry.JournalID.End_vol}}
       <br>
-      Sparge Temp: {{journals.JournalID.Sparge_temp}}
+      Hop Name 1: {{entry.JournalID.hop_name_1}}
       <br>
-      Sparge Time: {{journals.JournalID.Sparge_time}}
+      Hop Amount 1: {{entry.JournalID.hop_amount_1}}
       <br>
-      Recirc Time: {{journals.JournalID.Recirc_time}}
+      Hop Alpha Acid 1: {{entry.JournalID.hop_alpha_acid_1}}
       <br>
-      Mash Notes: {{journals.JournalID.Mash_notes}}
+      Hop Name 2: {{entry.JournalID.hop_name_2}}
       <br>
-      Starting Volume: {{journals.JournalID.Start_vol}}
+      Hop Amount 2: {{entry.JournalID.hop_amount_2}}
       <br>
-      Ending Volume: {{journals.JournalID.End_vol}}
+      Hop Alpha Acid 2: {{entry.JournalID.hop_alpha_acid_2}}
       <br>
-      Hop Name 1: {{journals.JournalID.hop_name_1}}
+      Hop Name 3: {{entry.JournalID.hop_name_3}}
       <br>
-      Hop Amount 1: {{journals.JournalID.hop_amount_1}}
+      Hop Amount 3: {{entry.JournalID.hop_amount_3}}
       <br>
-      Hop Alpha Acid 1: {{journals.JournalID.hop_alpha_acid_1}}
+      Hop Alpha Acid 3: {{entry.JournalID.hop_alpha_acid_3}}
+      <br><br>
+      whirlfloc: {{entry.JournalID.whirlfloc}}
       <br>
-      Hop Name 2: {{journals.JournalID.hop_name_2}}
+      Whirlpool_time: {{entry.JournalID.Whirlpool_time}}
+      <br><br>
+      Boil notes: {{entry.JournalID.Boil_notes}}
+      <br><br>
+      Yeast Name: {{entry.JournalID.Yeast_name}}
       <br>
-      Hop Amount 2: {{journals.JournalID.hop_amount_2}}
+      Yeast Amount: {{entry.JournalID.Yeast_amount}}
       <br>
-      Hop Alpha Acid 2: {{journals.JournalID.hop_alpha_acid_2}}
+      Start Gravity: {{entry.JournalID.Start_gravity}}
+      <br><br>
+      Temp 1: {{entry.JournalID.temp_1}}
       <br>
-      Hop Name 3: {{journals.JournalID.hop_name_3}}
+      Time 1: {{entry.JournalID.time_1}}
       <br>
-      Hop Amount 3: {{journals.JournalID.hop_amount_3}}
+      End Gravity 1: {{entry.JournalID.End_gravity_1}}
       <br>
-      Hop Alpha Acid 3: {{journals.JournalID.hop_alpha_acid_3}}
+      Temp 2{{entry.JournalID.temp_2}}
       <br>
-      whirlfloc: {{journals.JournalID.whirlfloc}}
+      Time 2: {{entry.JournalID.time_2}}
       <br>
-      Whirlpool_time: {{journals.JournalID.Whirlpool_time}}
+      End Gravity 2: {{entry.JournalID.End_gravity_2}}
       <br>
-      Boil notes: {{journals.JournalID.Boil_notes}}
+      Temp 3 {{entry.JournalID.temp_3}}
       <br>
-      Yeast Name: {{journals.JournalID.Yeast_name}}
+      Time 3: {{entry.JournalID.time_3}}
       <br>
-      Yeast Amount: {{journals.JournalID.Yeast_amount}}
+      End Gravity 3: {{entry.JournalID.End_gravity_3}}
+      <br><br>
+      ABV: {{entry.JournalID.ABV}}
       <br>
-      Start Gravity: {{journals.JournalID.Start_gravity}}
+      Larger Temp: {{entry.JournalID.Lager_temp}}
       <br>
-      Temp 1: {{journals.JournalID.temp_1}}
-      <br>
-      Time 1: {{journals.JournalID.time_1}}
-      <br>
-      End Gravity 1: {{journals.JournalID.End_gravity_1}}
-      <br>
-      Temp 2{{journals.JournalID.temp_2}}
-      <br>
-      Time 2: {{journals.JournalID.time_2}
-      <br>
-      End Gravity 2: {{journals.JournalID.End_gravity_2}}
-      <br>
-      Temp 3 {{journals.JournalID.temp_3}}
-      <br>
-      Time 3: {{journals.JournalID.time_3}}
-      <br>
-      End Gravity 3: {{journals.JournalID.End_gravity_3}}
-      <br>
-      ABV: {{journals.JournalID.ABV}}
-      <br>
-      Larger Temp: {{journals.JournalID.Lager_temp}}
-      <br>
-      Larger Time: {{journals.JournalID.Lager_time}}
-      <br>
-      Fermentation Notes: {{journals.JournalID.Fermentation_notes}}
-      <br>
-    {% endifequal %}
-  {% endfor %}
+      Larger Time: {{entry.JournalID.Lager_time}}
+      <br><br>
+      Fermentation Notes: {{entry.JournalID.Fermentation_notes}}
+      <br><br>
+  
 
 </body>
 

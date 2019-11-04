@@ -130,8 +130,13 @@ def create_journal(request):
 
     return render(request, 'Create_Journal.html', {'form0': form0, 'form1': form1, 'form2': form2, 'form3': form3})
 
-def journal_page(request,recipe_name):
+def journal_page(request,recipe_id):
     #is_logged_in = True
     DB = DBManager.getInstance()
     data = DB.getAllJournals()
-    return render(request, 'journal_page.html',{'data': data,'recipe_name' : recipe_name})
+    for entry in data:
+        if recipe_id == str(entry['id']):
+            return render(request, 'journal_page.html',{'entry': entry})
+    return HttpResponseRedirect('/')
+
+    
