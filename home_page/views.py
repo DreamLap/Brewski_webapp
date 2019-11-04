@@ -88,6 +88,7 @@ def edit_journal(request, journal_id):
                 #Journal exist but user isn't doesn't match UserID
                 else:
                     print('You dont have edit permissions')
+                    return render(request, 'home_page.html')
 
         #no journal exist to edit
         return render(request, 'home_page.html')

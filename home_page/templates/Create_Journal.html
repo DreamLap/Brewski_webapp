@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 
@@ -12,7 +13,9 @@
 </head>
 
 <body>
-  <h1 align="center">Create journal entry</h1>
+  <h1 align="center">Create journal entry
+    <img src="{% static 'images/brewjournal.png' %}" type="image" style="width:60px;height:100px;">
+  </h1>
   <ul>
     <li><a href="/">Home</a></li>
     <li><a href="/profile/">Profile</a></li>
