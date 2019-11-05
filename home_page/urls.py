@@ -7,11 +7,12 @@ app_name = 'home_page'
 
 urlpatterns = [
 
-    url('profile/', LoginView.as_view(template_name='profile.html'), name = 'profile'),
+    url('profile/', views.profile_page, name = 'profile'),
     url('logout/', views.logout_view, name = 'logout_view'),
 	url('create_journal/', views.create_journal, name = 'create_journal'),
     url('login/', LoginView.as_view(template_name='login.html'), name = 'login'),
-
+    path('edit_journal/<str:journal_id>', views.edit_journal, name = 'edit_journal'),
     url('register/', views.register, name = 'register'),
-    url('', views.home_page),
+    path('journal_page/<str:recipe_id>', views.journal_page, name = 'journal_page'), 
+    url('', views.home_page)
 ]
