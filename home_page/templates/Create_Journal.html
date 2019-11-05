@@ -13,8 +13,18 @@
 
 <body>
   <h1 align="center">Create journal entry</h1>
-        <ul>
-          <li><a href ="/">Home</a></li>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/profile/">Profile</a></li>
+    <li><a href="/create_journal/">Create journal</a></li>
+    <li style="float:right"><a href="#about">About</a></li>
+    {% if not user.is_authenticated %}
+    <li style="float:right"><a href="/login/">Sign in</a></li>
+    <li style="float:right"><a href="/register/">Create account</a></li>
+    {% else %}
+    <li style="float:right"><a href="/logout/">Log Out</a></li>
+    {% endif %}
+  </ul>
 
           <li style ="float:right"><a href ="#about">About</a></li>
 			{% if not user.is_authenticated %}
@@ -32,34 +42,59 @@
 
   <form method="POST">
     {% csrf_token %}
+
+    <p>
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#section0" aria-expanded="false"
+        aria-controls="collapseExample">
+        Information Step
+      </button>
+    </p>
+    <div class="collapse" id="section0">
+      <div class="card card-body">
+        {{ form0|linebreaks }}
+      </div>
+    </div>
+
     <p>
       <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#section1" aria-expanded="false"
         aria-controls="collapseExample">
-        Section 1 inputs
+        Mash Step
       </button>
     </p>
-	
-    
-	
     <div class="collapse" id="section1">
       <div class="card card-body">
-        {{ form1 }}
+        {{ form1|linebreaks }}
       </div>
     </div>
-	
+
     <p>
       <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#section2" aria-expanded="false"
         aria-controls="collapseExample">
-        Section 2 inputs
+        Boil Step
       </button>
     </p>
     <div class="collapse" id="section2">
       <div class="card card-body">
-        {{ form2 }}
+        {{ form2|linebreaks }}
+      </div>
+    </div>
+
+    <p>
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#section3" aria-expanded="false"
+        aria-controls="collapseExample">
+        Fermentation Step
+      </button>
+    </p>
+    <div class="collapse" id="section3">
+      <div class="card card-body">
+        {{ form3|linebreaks }}
       </div>
     </div>
     <input type="submit" value="Submit">
+
+
   </form>
+
 </body>
 
 
