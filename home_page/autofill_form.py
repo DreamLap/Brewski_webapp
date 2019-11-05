@@ -9,6 +9,7 @@ def autofill_form(entry, which_form):
         return data
 
     elif which_form == 1:
+        data.update({'Water_Volume': entry['JournalID']['Water_Volume']})
         data.update({'Step_Mash_1_temp': entry['JournalID']['Step_Mash_1_temp']})
         data.update({'Step_Mash_1_time': entry['JournalID']['Step_Mash_1_time']})
 
