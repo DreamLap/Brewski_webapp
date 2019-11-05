@@ -1,87 +1,30 @@
-{% load static %}
-<html>
-
-
-<head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-  <title> Home page </title>
-</head>
-
-<body>
-  <h1 align="center">Welcome to the Brewing Journal!
-    <img src="{% static 'images/brewjournal.png' %}" type="image" style="width:60px;height:100px;">
-  </h1>
-        <ul>
-          <li><a href ="/">Home</a></li>
-
-          <li style ="float:right"><a href ="#about">About</a></li>
-			{% if not user.is_authenticated %}
-			<li><a href="/login/">Profile</a></li>
-            <li><a href ="/login/">Create journal</a></li>
-			<li style="float:right"><a href="/login/">Sign in</a></li>
-			<li style="float:right"><a href="/register/">Create account</a></li>
-			{% else %}
-			<li><a href="/profile/">Profile</a></li>
-            <li><a href ="/create_journal/">Create journal</a></li>
-			<li style="float:right"><a href="/logout/">Log Out</a></li>
-
-			{% endif %}
-      </ul>
-
-
-
-    {{request.user.username}}
-    {% for journals in data %}
-
-
-    <p>
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#section1{{forloop.counter}}" aria-expanded="false"
-          aria-controls="collapseExample">
-          {{journals.JournalID.name_of_brew}}
-        </button>
-      </p>
-      <div class="collapse" id="section1{{forloop.counter}}">
-        <div class="card card-body">
-            hop name:{{journals.JournalID.hop_name}}
-            <br>
-            hop alpha:{{journals.JournalID.hop_alpha}}
-        </div>
-      </div>
-    {% endfor %}
-</body>
-
-
-</html>
-
-
-<style>
-  li {
-    float: left;
-  }
-
-
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #317393;
-  }
-
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-
-  table,
-  th,
-  td {
-    border: 1px solid black;
-  }
-</style>
+{% extends 'dt_base.html' %}
+{% block body %}
+    <table id = "table" class = "table table-bordered">
+        <thead class = "alert-success">
+            <tr>
+                <th>Brew Name</th>
+                <th>Hop Name</th>
+                <th>Hop Alpha</th>
+                <th>Hop Amount</th>
+                <th>Temp 1</th>
+                <th>Temp 2</th>
+                <th>View</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for journals in data  %}
+            <tr>
+                <td>{{ journals.JournalID.name_of_brew }}</td>
+                <td>{{ journals.JournalID.hop_name }}</td>
+                <td>{{ journals.JournalID.hop_alpha }}</td>
+                <td>{{ journals.JournalID.hop_amount }}</td>
+                <td>{{ journals.JournalID.temp1 }}</td>
+                <td>{{ journals.JournalID.temp2 }}</td>
+                <td></td>
+            </tr>
+           {% endfor %}
+        </tbody>
+    </table>
+ 
+{% endblock %}
