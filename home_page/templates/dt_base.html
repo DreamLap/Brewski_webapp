@@ -41,16 +41,27 @@
     <script type = "text/javascript">
         $(document).ready(function(){
             var table = $('#table').DataTable( {
-        		"columnDefs": [ {
-            		"targets": -1,
+        		"columnDefs": [ 
+        		{
+            		"targets": 6,
             		"data": null,
             		"defaultContent": "<button>View</button>"
-        		} ]
+        		},
+        		{ "targets":3, "visible":false},
+        		{ "targets":4, "visible":false},
+        		{ "targets":5, "visible":false}
+
+        		]
         	});
       
         	$('#table tbody').on( 'click', 'button', function () {
         	var data = table.row( $(this).parents('tr') ).data();
-        	alert( "Name of this brew is: "+ data[ 0 ] );
+        	alert( "Name of this brew is: "+ data[ 0 ] +
+        		"\nName of this hop is: " + data[1] +
+        		"\nHop Alpha is " + data[2] +
+        		"\nHop Amount is " + data[3] +
+        		"\nTemp 1 is " + data[4] +
+        		"\nTemp 2 is " + data[5]  );
     		} );
         });
 
