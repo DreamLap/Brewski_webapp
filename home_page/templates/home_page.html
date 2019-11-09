@@ -14,44 +14,44 @@
   <h1 align="center">Welcome to the Brewing Journal!
     <img src="{% static 'images/brewjournal.png' %}" type="image" style="width:60px;height:100px;">
   </h1>
-        <ul>
-          <li><a href ="/">Home</a></li>
+  <ul>
+    <li><a href="/">Home</a></li>
 
-          <li style ="float:right"><a href ="#about">About</a></li>
-			{% if not user.is_authenticated %}
-			<li><a href="/login/">Profile</a></li>
-            <li><a href ="/login/">Create journal</a></li>
-			<li style="float:right"><a href="/login/">Sign in</a></li>
-			<li style="float:right"><a href="/register/">Create account</a></li>
-			{% else %}
-			<li><a href="/profile/">Profile</a></li>
-            <li><a href ="/create_journal/">Create journal</a></li>
-			<li style="float:right"><a href="/logout/">Log Out</a></li>
+    <li style="float:right"><a href="#about">About</a></li>
+    {% if not user.is_authenticated %}
+    <li><a href="/login/">Profile</a></li>
+    <li><a href="/login/">Create journal</a></li>
+    <li style="float:right"><a href="/login/">Sign in</a></li>
+    <li style="float:right"><a href="/register/">Create account</a></li>
+    {% else %}
+    <li><a href="/profile/">Profile</a></li>
+    <li><a href="/create_journal/">Create journal</a></li>
+    <li style="float:right"><a href="/logout/">Log Out</a></li>
 
-			{% endif %}
-      </ul>
+    {% endif %}
+  </ul>
 
 
 
-    {{request.user.username}}
-    {% for journals in data %}
+  {{request.user.username}}
+  {% for journals in data %}
 
-    <p>
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#section1{{forloop.counter}}" aria-expanded="false"
-          aria-controls="collapseExample">
-          {{journals.JournalID.Name_of_brew}}
-        </button>
-      </p>
-      <div class="collapse" id="section1{{forloop.counter}}">
-        <div class="card card-body">
-            Link:  <a href="/journal_page/{{journals.id}}">{{journals.JournalID.Name_of_brew}}</a> 
-            <br>
-            Name of creator: {{journals.UserID}}
-            <br>s
-            Journal ID: {{journals.id}}
-        </div>
-      </div>
-    {% endfor %}
+  <p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#section1{{forloop.counter}}"
+      aria-expanded="false" aria-controls="collapseExample">
+      {{journals.JournalID.Name_of_brew}}
+    </button>
+  </p>
+  <div class="collapse" id="section1{{forloop.counter}}">
+    <div class="card card-body">
+      Link: <a href="/journal_page/{{journals.id}}">{{journals.JournalID.Name_of_brew}}</a>
+      <br>
+      Name of creator: {{journals.UserID}}
+      <br>s
+      Journal ID: {{journals.id}}
+    </div>
+  </div>
+  {% endfor %}
 </body>
 
 
