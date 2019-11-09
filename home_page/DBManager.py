@@ -37,19 +37,22 @@ class DBManager:
 
    print( x.getItem(key,'users'))
     '''
-   def getItem(self, key,table):
+   def getItemByID(self, key, table):
+       if ObjectId.is_valid(key) == False:
+          return None
        self.__table =  self.__db[table]
-       response = self.__table.find_one(key)
+       response = self.__table.find_one(ObjectId(key))
        return response
 
     
    def saveItem(self, item, table):
        self.__table =  self.__db[table]
        self.__table.insert_one(item)
-    
-   def deleteItem(self,item,table):
+
+
+   def deleteItemByID(self, key, table):
        self.__table =  self.__db[table]
-       self.__table.delete_one(item)
+       self.__table.delete_one({'_id': ObjectId(key)})
 
 
    def getAllJournals(self):

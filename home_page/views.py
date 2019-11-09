@@ -97,7 +97,7 @@ def edit_journal(request, journal_id):
 def logout_view(request):
     print('logout hit')
     logout(request)
-    return render(request, 'home_page.html')
+    return HttpResponseRedirect('/')
 
 def register(request):
 
@@ -165,3 +165,19 @@ def journal_page(request,recipe_id):
         
     error_message = 'Error: Journal ID %s does not exist.' % recipe_id
     return render(request, 'error_page.html', {'error_message': error_message})
+
+def delete_journal(request, journal_id):
+    print('delete_journal call')
+    DB = DBManager.getInstance()
+    journal_entry = DB.getItemByID(journal_id, 'Journal')
+
+    if journal_entry == None:
+        error_message = 'Journal %s does not exist' % journal_id
+        return render(request, 'error_page.html', {'error_message': error_message})
+
+    elif str(request.user) != str(journal_entry['UserID']):
+        error_message = 'You do not have permission to edit journal %s.' % journal_id
+        return render(request, 'error_page.html', {'error_message': error_message})
+
+    DB.deleteItemByID(journal_id, 'Journal')
+    return redirect('/')
