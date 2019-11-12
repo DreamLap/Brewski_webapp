@@ -10,6 +10,7 @@ urlpatterns = [
     url('profile/', views.profile_page, name = 'profile'),
     url('logout/', views.logout_view, name = 'logout_view'),
     path('delete_journal/<str:journal_id>', views.delete_journal, name = 'delete_journal'),
+    path('favorite_journal/<str:journal_id>', views.favorite_journal, name = 'favorite_journal'),
 	url('create_journal/', views.create_journal, name = 'create_journal'),
     url('login/', LoginView.as_view(template_name='login.html'), name = 'login'),
     path('edit_journal/<str:journal_id>', views.edit_journal, name = 'edit_journal'),

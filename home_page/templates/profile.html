@@ -27,7 +27,7 @@
   </ul>
 
 
-  {{request.user.username}}
+  MY BREWS
   {% for journals in data %}
 
 
@@ -51,6 +51,32 @@
     </div>
   </div>
   {% endif %}
+  {% endfor %}
+
+
+  <br>
+  <br>
+  <br>
+  FAVORITE LIST
+  {% for journals in favorite_list %}
+  <p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#section1{{forloop.counter}}"
+      aria-expanded="false" aria-controls="collapseExample">
+      {{journals.JournalID.Name_of_brew}}
+    </button>
+  </p>
+  <div class="collapse" id="section1{{forloop.counter}}">
+    <div class="card card-body">
+      Link: <a href="/journal_page/{{journals.id}}">{{journals.JournalID.Name_of_brew}}</a>
+      <br>
+      Name of creator: {{journals.UserID}}
+      <br>
+      Journal ID:{{journals.id}}
+      <br>
+      <a href="/edit_journal/{{journals.id}}">Edit</a>
+      <a href="/delete_journal/{{journals.id}}" onclick="return confirm('Are you sure you want to delete this journal?');">Delete</a>
+    </div>
+  </div>
   {% endfor %}
 
 
