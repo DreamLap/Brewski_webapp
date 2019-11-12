@@ -1,88 +1,120 @@
-{% load static %}
-<html>
-
-
-<head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-  <title> Home page </title>
-</head>
-
-<body>
-  <h1 align="center">Welcome to the Brewing Journal!
-    <img src="{% static 'images/brewjournal.png' %}" type="image" style="width:60px;height:100px;">
-  </h1>
-        <ul>
-          <li><a href ="/">Home</a></li>
-
-          <li style ="float:right"><a href ="#about">About</a></li>
-			{% if not user.is_authenticated %}
-			<li><a href="/login/">Profile</a></li>
-            <li><a href ="/login/">Create journal</a></li>
-			<li style="float:right"><a href="/login/">Sign in</a></li>
-			<li style="float:right"><a href="/register/">Create account</a></li>
-			{% else %}
-			<li><a href="/profile/">Profile</a></li>
-            <li><a href ="/create_journal/">Create journal</a></li>
-			<li style="float:right"><a href="/logout/">Log Out</a></li>
-
-			{% endif %}
-      </ul>
-
-
-
-    {{request.user.username}}
-    {% for journals in data %}
-
-    <p>
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#section1{{forloop.counter}}" aria-expanded="false"
-          aria-controls="collapseExample">
-          {{journals.JournalID.Name_of_brew}}
-        </button>
-      </p>
-      <div class="collapse" id="section1{{forloop.counter}}">
-        <div class="card card-body">
-            Link:  <a href="/journal_page/{{journals.id}}">{{journals.JournalID.Name_of_brew}}</a> 
-            <br>
-            Name of creator: {{journals.UserID}}
-            <br>s
-            Journal ID: {{journals.id}}
-        </div>
-      </div>
-    {% endfor %}
-</body>
-
-
-</html>
-
-
-<style>
-  li {
-    float: left;
-  }
-
-
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #317393;
-  }
-
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-
-  table,
-  th,
-  td {
-    border: 1px solid black;
-  }
-</style>
+{% extends 'dt_base.html' %}
+{% block body %}
+    <table id = "table" class = "table table-bordered">
+        <thead class = "alert-success">
+            <tr>
+                <th>Brew Name</th>
+                <th>Overall Notes</th>
+                <th>Water Volume</th>
+                <th>Step Mash 1 temp</th>
+                <th>Step Mash 1 time</th>
+                <th>Step Mash 2 temp</th>
+                <th>Step Mash 2 time</th>
+                <th>Step Mash 3 temp</th>
+                <th>Step Mash 3 time</th>
+                <th>Step Mash 4 temp</th>
+                <th>Step Mash 4 time</th>
+                <th>Step Mash 5 temp</th>
+                <th>Step Mash 5 time</th>
+                <th>Mash Out</th>
+                <th>Sparge Temp</th>
+                <th>Sparge Time</th>
+                <th>Recirc Time</th>
+                <th>Mash Notes</th>
+                <th>Start Volume</th>
+                <th>End Volume</th>
+                <th>Hop Name 1</th>
+                <th>Hop Amount 1</th>
+                <th>Hop Alpha Acid 1</th>
+                <th>Hop Time 1</th>
+                <th>Hop Name 2</th>
+                <th>Hop Amount 2</th>
+                <th>Hop Alpha Acid 2</th>
+                <th>Hop Time 2</th>
+                <th>Hop Name 3</th>
+                <th>Hop Amount 3</th>
+                <th>Hop Alpha Acid 3</th>
+                <th>Hop Time 3</th>
+                <th>Whirlfloc</th>
+                <th>Whirlpool Time</th>
+                <th>Boil Notes</th>
+                <th>Yeast Name</th>
+                <th>Yeast Amount</th>
+                <th>Start Gravity</th>
+                <th>Temp 1</th>
+                <th>Time 1</th>
+                <th>End Gravity 1</th>
+                <th>Temp 2</th>
+                <th>Time 2</th>
+                <th>End Gravity 2</th>
+                <th>Temp 3</th>
+                <th>Time 3</th>
+                <th>End Gravity 3</th>
+                <th>ABV</th>
+                <th>Lager Temp</th>
+                <th>Lager Time</th>
+                <th>Fermentation Notes</th>
+                <th>View</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for journals in data  %}
+            <tr>
+                <td>{{ journals.JournalID.Name_of_brew }}</td>
+                <td>{{ journals.JournalID.Overall_notes }}</td>
+                <td>{{ journals.JournalID.Water_Volume }}</td>
+                <td>{{ journals.JournalID.Step_Mash_1_temp }}</td>
+                <td>{{ journals.JournalID.Step_Mash_1_time }}</td>
+                <td>{{ journals.JournalID.Step_Mash_2_temp }}</td>
+                <td>{{ journals.JournalID.Step_Mash_2_time }}</td>
+                <td>{{ journals.JournalID.Step_Mash_3_temp }}</td>
+                <td>{{ journals.JournalID.Step_Mash_3_time }}</td>
+                <td>{{ journals.JournalID.Step_Mash_4_temp }}</td>
+                <td>{{ journals.JournalID.Step_Mash_4_time }}</td>
+                <td>{{ journals.JournalID.Step_Mash_5_temp }}</td>
+                <td>{{ journals.JournalID.Step_Mash_5_time }}</td>
+                <td>{{ journals.JournalID.Mash_out }}</td>
+                <td>{{ journals.JournalID.Sparge_temp }}</td>
+                <td>{{ journals.JournalID.Sparge_time }}</td>
+                <td>{{ journals.JournalID.Recirc_time }}</td>
+                <td>{{ journals.JournalID.Mash_notes }}</td>
+                <td>{{ journals.JournalID.Start_vol }}</td>
+                <td>{{ journals.JournalID.End_vol }}</td>
+                <td>{{ journals.JournalID.hop_name_1 }}</td>
+                <td>{{ journals.JournalID.hop_amount_1 }}</td>
+                <td>{{ journals.JournalID.hop_alpha_acid_1 }}</td>
+                <td>{{ journals.JournalID.hop_time_1 }}</td>
+                <td>{{ journals.JournalID.hop_name_2 }}</td>
+                <td>{{ journals.JournalID.hop_amount_2 }}</td>
+                <td>{{ journals.JournalID.hop_alpha_acid_2 }}</td>
+                <td>{{ journals.JournalID.hop_time_2 }}</td>
+                <td>{{ journals.JournalID.hop_name_3 }}</td>
+                <td>{{ journals.JournalID.hop_amount_3 }}</td>
+                <td>{{ journals.JournalID.hop_alpha_acid_3 }}</td>
+                <td>{{ journals.JournalID.hop_time_3 }}</td>
+                <td>{{ journals.JournalID.Whirlfloc }}</td>
+                <td>{{ journals.JournalID.Whirlpool_time }}</td>
+                <td>{{ journals.JournalID.Boil_notes }}</td>
+                <td>{{ journals.JournalID.Yeast_name }}</td>
+                <td>{{ journals.JournalID.Yeast_amount }}</td>
+                <td>{{ journals.JournalID.Start_gravity }}</td>
+                <td>{{ journals.JournalID.temp_1 }}</td>
+                <td>{{ journals.JournalID.time_1 }}</td>
+                <td>{{ journals.JournalID.End_gravity_1 }}</td>
+                <td>{{ journals.JournalID.temp_2 }}</td>
+                <td>{{ journals.JournalID.time_2 }}</td>
+                <td>{{ journals.JournalID.End_gravity_2 }}</td>
+                <td>{{ journals.JournalID.temp_3 }}</td>
+                <td>{{ journals.JournalID.time_3 }}</td>
+                <td>{{ journals.JournalID.End_gravity_3 }}</td>
+                <td>{{ journals.JournalID.ABV }}</td>
+                <td>{{ journals.JournalID.Lager_temp }}</td>
+                <td>{{ journals.JournalID.Lager_time }}</td>
+                <td>{{ journals.JournalID.Fermentation_notes }}</td>
+                <td></td>
+            </tr>
+           {% endfor %}
+        </tbody>
+    </table>
+ 
+{% endblock %}
