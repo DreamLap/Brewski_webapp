@@ -23,11 +23,10 @@ def profile_page(request):
     is_logged_in = True
     DB = DBManager.getInstance()
     data = DB.getAllJournals()
-    return render(request, 'profile.html', {'data': data,'is_logged_in' : is_logged_in})
+    favorite_list = DB.getFavoriteJournalList(request.user)
+    return render(request, 'profile.html', {'data': data,'is_logged_in' : is_logged_in, 'favorite_list' : favorite_list})
 
 def home_page(request):
-    #return render(request, 'home_page.html')
-    print('home page call')
     print(request.user)
     is_logged_in = True
     DB = DBManager.getInstance()
@@ -88,17 +87,17 @@ def edit_journal(request, journal_id):
                     return render(request, 'edit_journal.html', {'entry': entry, 'form0': form0, 'form1': form1, 'form2': form2, 'form3': form3})
                 #Journal exist but user isn't doesn't match UserID
                 else:
-                    print('You dont have edit permissions')
-                    return render(request, 'home_page.html')
+                    error_message = 'Error: You do not have permission to edit this journal.'
+                    return render(request, 'error_page.html', {'error_message': error_message})
 
         #no journal exist to edit
-        return render(request, 'home_page.html')
+        error_message = 'Error: Journal ID %s does not exist.' % journal_id
+        return render(request, 'error_page.html', {'error_message': error_message})
 
 def logout_view(request):
     print('logout hit')
     logout(request)
-    #return render(request, 'home_page.html')
-    return redirect('/home_page')
+    return HttpResponseRedirect('/')
 
 def register(request):
 
@@ -110,6 +109,10 @@ def register(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
+            
+            #creates favorites list for user
+            DB = DBManager.getInstance()
+            DB.createFavoritesForUser(request.user)
             return redirect('/')
 
     else:
@@ -164,6 +167,35 @@ def journal_page(request,recipe_id):
     for entry in data:
         if recipe_id == str(entry['id']):
             return render(request, 'journal_page.html',{'entry': entry})
-    return HttpResponseRedirect('/')
+        
+    error_message = 'Error: Journal ID %s does not exist.' % recipe_id
+    return render(request, 'error_page.html', {'error_message': error_message})
 
+def delete_journal(request, journal_id):
+    print('delete_journal call')
+    DB = DBManager.getInstance()
+    journal_entry = DB.getItemByID(journal_id, 'Journal')
+
+    if journal_entry == None:
+        error_message = 'Journal %s does not exist' % journal_id
+        return render(request, 'error_page.html', {'error_message': error_message})
+
+    elif str(request.user) != str(journal_entry['UserID']):
+        error_message = 'You do not have permission to edit journal %s.' % journal_id
+        return render(request, 'error_page.html', {'error_message': error_message})
+
+    DB.deleteItemByID(journal_id, 'Journal')
+    return redirect('/')
+
+def favorite_journal(request, journal_id):
+    print('favorite_journal call')
+    DB = DBManager.getInstance()
+    journal_entry = DB.getItemByID(journal_id, 'Journal')
+
+    if journal_entry == None:
+        error_message = 'Journal %s does not exist' % journal_id
+        return render(request, 'error_page.html', {'error_message': error_message})
     
+    DB.favoriteJournalByID(journal_id, request.user)
+    DB.getFavoriteJournalList(request.user)
+    return redirect('/')
