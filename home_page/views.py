@@ -181,7 +181,7 @@ def delete_journal(request, journal_id):
         return render(request, 'error_page.html', {'error_message': error_message})
 
     elif str(request.user) != str(journal_entry['UserID']):
-        error_message = 'You do not have permission to edit journal %s.' % journal_id
+        error_message = 'You do not have permission to delete journal %s.' % journal_id
         return render(request, 'error_page.html', {'error_message': error_message})
 
     DB.deleteItemByID(journal_id, 'Journal')
