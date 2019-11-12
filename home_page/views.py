@@ -1,8 +1,8 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
-
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.decorators import login_required
 from .DBManager import DBManager
 from .forms import JournalFormSection0
 from .forms import JournalFormSection1
@@ -15,9 +15,10 @@ from .autofill_form import autofill_form
 
 import boto3
 
+
   
 # Create your views here.
-
+@login_required
 def profile_page(request):
     is_logged_in = True
     DB = DBManager.getInstance()
@@ -119,6 +120,7 @@ def register(request):
 
     return render(request, 'register.html', {'form': form})
 
+@login_required
 def create_journal(request):
     print('create journal call')
 

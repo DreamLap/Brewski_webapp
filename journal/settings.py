@@ -39,6 +39,7 @@ ALLOWED_HOSTS = ['brewski-app.5vns5knpx3.us-west-2.elasticbeanstalk.com', '127.0
 INSTALLED_APPS = [
 
     'home_page',
+    'table',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
