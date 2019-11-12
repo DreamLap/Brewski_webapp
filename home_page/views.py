@@ -18,7 +18,7 @@ import boto3
 
   
 # Create your views here.
-
+@login_required
 def profile_page(request):
     is_logged_in = True
     DB = DBManager.getInstance()

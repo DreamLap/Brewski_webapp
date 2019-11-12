@@ -4,23 +4,113 @@
         <thead class = "alert-success">
             <tr>
                 <th>Brew Name</th>
-                <th>Hop Name</th>
-                <th>Hop Alpha</th>
-                <th>Hop Amount</th>
+                <th>Overall Notes</th>
+                <th>Water Volume</th>
+                <th>Step Mash 1 temp</th>
+                <th>Step Mash 1 time</th>
+                <th>Step Mash 2 temp</th>
+                <th>Step Mash 2 time</th>
+                <th>Step Mash 3 temp</th>
+                <th>Step Mash 3 time</th>
+                <th>Step Mash 4 temp</th>
+                <th>Step Mash 4 time</th>
+                <th>Step Mash 5 temp</th>
+                <th>Step Mash 5 time</th>
+                <th>Mash Out</th>
+                <th>Sparge Temp</th>
+                <th>Sparge Time</th>
+                <th>Recirc Time</th>
+                <th>Mash Notes</th>
+                <th>Start Volume</th>
+                <th>End Volume</th>
+                <th>Hop Name 1</th>
+                <th>Hop Amount 1</th>
+                <th>Hop Alpha Acid 1</th>
+                <th>Hop Time 1</th>
+                <th>Hop Name 2</th>
+                <th>Hop Amount 2</th>
+                <th>Hop Alpha Acid 2</th>
+                <th>Hop Time 2</th>
+                <th>Hop Name 3</th>
+                <th>Hop Amount 3</th>
+                <th>Hop Alpha Acid 3</th>
+                <th>Hop Time 3</th>
+                <th>Whirlfloc</th>
+                <th>Whirlpool Time</th>
+                <th>Boil Notes</th>
+                <th>Yeast Name</th>
+                <th>Yeast Amount</th>
+                <th>Start Gravity</th>
                 <th>Temp 1</th>
+                <th>Time 1</th>
+                <th>End Gravity 1</th>
                 <th>Temp 2</th>
+                <th>Time 2</th>
+                <th>End Gravity 2</th>
+                <th>Temp 3</th>
+                <th>Time 3</th>
+                <th>End Gravity 3</th>
+                <th>ABV</th>
+                <th>Lager Temp</th>
+                <th>Lager Time</th>
+                <th>Fermentation Notes</th>
                 <th>View</th>
             </tr>
         </thead>
         <tbody>
             {% for journals in data  %}
             <tr>
-                <td>{{ journals.JournalID.name_of_brew }}</td>
-                <td>{{ journals.JournalID.hop_name }}</td>
-                <td>{{ journals.JournalID.hop_alpha }}</td>
-                <td>{{ journals.JournalID.hop_amount }}</td>
-                <td>{{ journals.JournalID.temp1 }}</td>
-                <td>{{ journals.JournalID.temp2 }}</td>
+                <td>{{ journals.JournalID.Name_of_brew }}</td>
+                <td>{{ journals.JournalID.Overall_notes }}</td>
+                <td>{{ journals.JournalID.Water_Volume }}</td>
+                <td>{{ journals.JournalID.Step_Mash_1_temp }}</td>
+                <td>{{ journals.JournalID.Step_Mash_1_time }}</td>
+                <td>{{ journals.JournalID.Step_Mash_2_temp }}</td>
+                <td>{{ journals.JournalID.Step_Mash_2_time }}</td>
+                <td>{{ journals.JournalID.Step_Mash_3_temp }}</td>
+                <td>{{ journals.JournalID.Step_Mash_3_time }}</td>
+                <td>{{ journals.JournalID.Step_Mash_4_temp }}</td>
+                <td>{{ journals.JournalID.Step_Mash_4_time }}</td>
+                <td>{{ journals.JournalID.Step_Mash_5_temp }}</td>
+                <td>{{ journals.JournalID.Step_Mash_5_time }}</td>
+                <td>{{ journals.JournalID.Mash_out }}</td>
+                <td>{{ journals.JournalID.Sparge_temp }}</td>
+                <td>{{ journals.JournalID.Sparge_time }}</td>
+                <td>{{ journals.JournalID.Recirc_time }}</td>
+                <td>{{ journals.JournalID.Mash_notes }}</td>
+                <td>{{ journals.JournalID.Start_vol }}</td>
+                <td>{{ journals.JournalID.End_vol }}</td>
+                <td>{{ journals.JournalID.hop_name_1 }}</td>
+                <td>{{ journals.JournalID.hop_amount_1 }}</td>
+                <td>{{ journals.JournalID.hop_alpha_acid_1 }}</td>
+                <td>{{ journals.JournalID.hop_time_1 }}</td>
+                <td>{{ journals.JournalID.hop_name_2 }}</td>
+                <td>{{ journals.JournalID.hop_amount_2 }}</td>
+                <td>{{ journals.JournalID.hop_alpha_acid_2 }}</td>
+                <td>{{ journals.JournalID.hop_time_2 }}</td>
+                <td>{{ journals.JournalID.hop_name_3 }}</td>
+                <td>{{ journals.JournalID.hop_amount_3 }}</td>
+                <td>{{ journals.JournalID.hop_alpha_acid_3 }}</td>
+                <td>{{ journals.JournalID.hop_time_3 }}</td>
+                <td>{{ journals.JournalID.Whirlfloc }}</td>
+                <td>{{ journals.JournalID.Whirlpool_time }}</td>
+                <td>{{ journals.JournalID.Boil_notes }}</td>
+                <td>{{ journals.JournalID.Yeast_name }}</td>
+                <td>{{ journals.JournalID.Yeast_amount }}</td>
+                <td>{{ journals.JournalID.Start_gravity }}</td>
+                <td>{{ journals.JournalID.temp_1 }}</td>
+                <td>{{ journals.JournalID.time_1 }}</td>
+                <td>{{ journals.JournalID.End_gravity_1 }}</td>
+                <td>{{ journals.JournalID.temp_2 }}</td>
+                <td>{{ journals.JournalID.time_2 }}</td>
+                <td>{{ journals.JournalID.End_gravity_2 }}</td>
+                <td>{{ journals.JournalID.temp_3 }}</td>
+                <td>{{ journals.JournalID.time_3 }}</td>
+                <td>{{ journals.JournalID.End_gravity_3 }}</td>
+                <td>{{ journals.JournalID.ABV }}</td>
+                <td>{{ journals.JournalID.Lager_temp }}</td>
+                <td>{{ journals.JournalID.Lager_time }}</td>
+                <td>{{ journals.JournalID.Fermentation_notes }}</td>
                 <td></td>
             </tr>
            {% endfor %}
