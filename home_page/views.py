@@ -189,6 +189,13 @@ def delete_journal(request, journal_id):
 
 def favorite_journal(request, journal_id):
     print('favorite_journal call')
+    print('request.user: ', request.user)
+    if request.user.is_authenticated:
+        print('you are logged in')
+    else:
+        print('you are not logged in')
+        return profile_page(request)
+        
     DB = DBManager.getInstance()
     journal_entry = DB.getItemByID(journal_id, 'Journal')
 
