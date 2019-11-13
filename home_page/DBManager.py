@@ -57,25 +57,22 @@ class DBManager:
    
    def favoriteJournalByID(self, journal_id, username):
        print('add journal to favs')
-       self.__table =  self.__db['Favorties']
+       self.__table =  self.__db['Favorites']
        query = {'_id': str(username)}
        add_value = {"$push": {'Favorites_list': journal_id}}
        self.__table.update(query, add_value)
        #print('user db response: ')
 
    def getFavoriteJournalList(self, username):
-       self.__table =  self.__db['Favorties']
+       self.__table =  self.__db['Favorites']
        mydoc = self.__table.find({'_id': str(username)})
-       
+
        #gets 'Favorites' table with user info
        my_list = []
        #my_list.append(mydoc[0])
        for x in mydoc:
          x['id'] = x.pop('_id')
          my_list.append(x)
-
-       #return my_list
-       #print(my_list[0]['Favorites_list'][0])
 
        #converts pointer to object
        favortie_list = []
@@ -84,15 +81,15 @@ class DBManager:
           entry['id'] = entry.pop('_id')
           favortie_list.append(entry)
        
-       print("entry: ", favortie_list)
+
        return favortie_list
 
        
 
 
    def createFavoritesForUser(self, username):
-       self.__table = self.__db['Favorties']
-       self.__table.insert_one({'_id': str(username)})
+       self.__table = self.__db['Favorites']
+       self.__table.insert_one({'_id': str(username), 'Favorites_list': []})
 
 
    def getAllJournals(self):

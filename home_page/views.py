@@ -187,6 +187,7 @@ def delete_journal(request, journal_id):
     DB.deleteItemByID(journal_id, 'Journal')
     return redirect('/')
 
+@login_required
 def favorite_journal(request, journal_id):
     print('favorite_journal call')
     print('request.user: ', request.user)
