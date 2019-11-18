@@ -26,19 +26,13 @@ def profile_page(request):
 
     #checks to see if user has create a favorties journal
     favorite_list = DB.getFavoriteJournalList(request.user)
-    print('fav list: ', favorite_list)
     return render(request, 'profile.html', {'data': data,'is_logged_in' : is_logged_in, 'favorite_list' : favorite_list})
 
 def home_page(request):
-    print(request.user)
     is_logged_in = True
     DB = DBManager.getInstance()
     data = DB.getAllJournals()
     return render(request, 'home_page.html', {'data': data,'is_logged_in' : is_logged_in})
-
-#def login(request):
-    #print('login request')
-#   return render(request, 'login.html')
 
 def edit_journal(request, journal_id):
     if request.method == 'POST':
@@ -47,8 +41,6 @@ def edit_journal(request, journal_id):
         form1 = JournalFormSection1(request.POST)
         form2 = JournalFormSection2(request.POST)
         form3 = JournalFormSection3(request.POST)
-        if form0.is_valid():
-            print('FORM0 is valid!!!')
         if form0.is_valid() and form1.is_valid() and form2.is_valid() and form3.is_valid():
             # process the data in form.cleaned_data as required
             form0_clean = form0.cleaned_data
@@ -63,9 +55,6 @@ def edit_journal(request, journal_id):
             ej(combine_form_clean, str(request.user), journal_id)
             return profile_page(request)
 
-        else:
-            print('sorry fam')
-
 
     else:
         DB = DBManager.getInstance()
@@ -75,7 +64,6 @@ def edit_journal(request, journal_id):
             if journal_id == str(entry['id']):
                 #auth that the user is able to edit
                 if str(request.user) == str(entry['UserID']):
-                    print('you can edit this journal: ' , entry['id'])
 
                     #auto populates form with DB info
                     filled_out_form = autofill_form(entry, 0)
@@ -102,7 +90,6 @@ def edit_journal(request, journal_id):
         return render(request, 'error_page.html', {'error_message': error_message})
 
 def logout_view(request):
-    print('logout hit')
     logout(request)
     return HttpResponseRedirect('/')
 
@@ -129,11 +116,9 @@ def register(request):
 
 @login_required
 def create_journal(request):
-    print('create journal')
 
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
-        print('we in post')
         # create a form instance and populate it with data from the request:
         form0 = JournalFormSection0(request.POST)
         form1 = JournalFormSection1(request.POST)
@@ -142,7 +127,6 @@ def create_journal(request):
         # check whether it's valid:
         if form0.is_valid() and form1.is_valid() and form2.is_valid() and form3.is_valid():
             # process the data in form.cleaned_data as required
-            print("passed")
             form0_clean = form0.cleaned_data
             form1_clean = form1.cleaned_data
             form2_clean = form2.cleaned_data
@@ -160,8 +144,6 @@ def create_journal(request):
 
     # if a GET (or any other method) we'll create a blank form
     else:
-        print(request.user)
-        print('this shouldnt appear twice')
         form0 = JournalFormSection0()
         form1 = JournalFormSection1()
         form2 = JournalFormSection2()
@@ -176,7 +158,6 @@ def journal_page(request,recipe_id):
     data = DB.getAllJournals()
     for entry in data:
         if recipe_id == str(entry['id']):
-            print('entry page: ', entry['id'])
             isJournalFavorited = DB.checkUserFavoritedList(str(request.user), recipe_id)
             return render(request, 'journal_page.html',{'entry': entry, 'isJournalFavorited': isJournalFavorited})
         
@@ -184,7 +165,6 @@ def journal_page(request,recipe_id):
     return render(request, 'error_page.html', {'error_message': error_message})
 
 def delete_journal(request, journal_id):
-    print('delete_journal call')
     DB = DBManager.getInstance()
     journal_entry = DB.getItemByID(journal_id, 'Journal')
 
@@ -197,7 +177,7 @@ def delete_journal(request, journal_id):
         return render(request, 'error_page.html', {'error_message': error_message})
 
     DB.deleteItemByID(journal_id, 'Journal')
-    return redirect('/')
+    return profile_page(request)
 
 @login_required
 def favorite_journal(request, journal_id):
