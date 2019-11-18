@@ -1,10 +1,13 @@
 from django import forms
 from django.utils.safestring import mark_safe
+from datetime import date
 
 class JournalFormSection0(forms.Form):
 
 	Name_of_brew = forms.CharField(max_length=100)
 	Overall_notes = forms.CharField(widget = forms.Textarea, required = False)
+	Completed = forms.BooleanField(required=False)
+	Date = forms.DateField(initial=date.today(),widget=forms.HiddenInput())
 
 class JournalFormSection1(forms.Form):
 	

@@ -6,6 +6,7 @@ def autofill_form(entry, which_form):
     if which_form == 0:
         data.update({'Name_of_brew': entry['JournalID']['Name_of_brew']})
         data.update({'Overall_notes': entry['JournalID']['Overall_notes']})
+        data.update({'Completed': entry['JournalID']['Completed']})
         return data
 
     elif which_form == 1:
