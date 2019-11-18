@@ -26,8 +26,9 @@
     {% endif %}
   </ul>
 
-
-  MY BREWS
+  <blockquote>
+  <font size="6">MY BREWS</font>
+  <br>
   {% for journals in data %}
 
 
@@ -57,7 +58,8 @@
   <br>
   <br>
   <br>
-  FAVORITE LIST
+  <font size="6">FAVORITE LIST</font>
+  <br>
   {% for journals in favorite_list %}
   <p>
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#section1{{forloop.counter}}"
@@ -78,7 +80,7 @@
     </div>
   </div>
   {% endfor %}
-
+  </blockquote>
 
 
 

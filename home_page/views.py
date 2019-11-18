@@ -47,7 +47,8 @@ def edit_journal(request, journal_id):
         form1 = JournalFormSection1(request.POST)
         form2 = JournalFormSection2(request.POST)
         form3 = JournalFormSection3(request.POST)
-
+        if form0.is_valid():
+            print('FORM0 is valid!!!')
         if form0.is_valid() and form1.is_valid() and form2.is_valid() and form3.is_valid():
             # process the data in form.cleaned_data as required
             form0_clean = form0.cleaned_data
@@ -60,7 +61,10 @@ def edit_journal(request, journal_id):
             combine_form_clean.update(form2_clean)
             combine_form_clean.update(form3_clean)
             ej(combine_form_clean, str(request.user), journal_id)
-            return HttpResponseRedirect('/')
+            return profile_page(request)
+
+        else:
+            print('sorry fam')
 
 
     else:
@@ -83,7 +87,7 @@ def edit_journal(request, journal_id):
                     filled_out_form = autofill_form(entry, 2)
                     form2 = JournalFormSection2(filled_out_form)
 
-                    filled_out_form = autofill_form(entry, 2)
+                    filled_out_form = autofill_form(entry, 3)
                     form3 = JournalFormSection3(filled_out_form)
 
 
@@ -125,10 +129,11 @@ def register(request):
 
 @login_required
 def create_journal(request):
-    print('create journal call')
+    print('create journal')
 
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
+        print('we in post')
         # create a form instance and populate it with data from the request:
         form0 = JournalFormSection0(request.POST)
         form1 = JournalFormSection1(request.POST)
@@ -137,6 +142,7 @@ def create_journal(request):
         # check whether it's valid:
         if form0.is_valid() and form1.is_valid() and form2.is_valid() and form3.is_valid():
             # process the data in form.cleaned_data as required
+            print("passed")
             form0_clean = form0.cleaned_data
             form1_clean = form1.cleaned_data
             form2_clean = form2.cleaned_data
@@ -155,6 +161,7 @@ def create_journal(request):
     # if a GET (or any other method) we'll create a blank form
     else:
         print(request.user)
+        print('this shouldnt appear twice')
         form0 = JournalFormSection0()
         form1 = JournalFormSection1()
         form2 = JournalFormSection2()
