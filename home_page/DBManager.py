@@ -53,15 +53,29 @@ class DBManager:
    def deleteItemByID(self, key, table):
        self.__table =  self.__db[table]
        self.__table.delete_one({'_id': ObjectId(key)})
+       self.removeDeletedJournalFromAllFavorites(key)
+       return
 
    
    def favoriteJournalByID(self, journal_id, username):
-       print('add journal to favs')
        self.__table =  self.__db['Favorites']
        query = {'_id': str(username)}
        add_value = {"$push": {'Favorites_list': journal_id}}
        self.__table.update(query, add_value)
        #print('user db response: ')
+
+   def removeDeletedJournalFromAllFavorites(self, key):
+       self.__table =  self.__db['Favorites']
+       self.__table.update( {}, {"$pull": { 'Favorites_list': {"$in": [key]} } },  upsert = False, multi = True )
+       print('key: ', key)
+
+   
+   def removeJournalFromFavorites(self, journal_id, username):
+       print('removeJournalFromFav DB call')
+       self.__table =  self.__db['Favorites']
+       self.__table.update( {'_id': str(username)}, {"$pull": { 'Favorites_list': {"$in": [journal_id]} } } )
+
+
 
    def getFavoriteJournalList(self, username):
        self.__table =  self.__db['Favorites']
@@ -74,17 +88,30 @@ class DBManager:
          x['id'] = x.pop('_id')
          my_list.append(x)
 
+       print ('my_list: ', my_list)
        #converts pointer to object
        favortie_list = []
        for journal_id in my_list[0]['Favorites_list']:
           entry = self.getItemByID(journal_id, 'Journal')
+          if entry == None:
+             continue
           entry['id'] = entry.pop('_id')
           favortie_list.append(entry)
        
 
        return favortie_list
 
-       
+   
+   def checkUserFavoritedList(self, username, journal_id):
+       self.__table = self.__db['Favorites']
+       favorite_journal_flag = False
+       for document in self.__table.find({'_id': str(username), 'Favorites_list': journal_id}):
+          print(document)
+          favorite_journal_flag = True
+          break
+       print('document ends, fav_journal_flag: ', favorite_journal_flag)
+       return favorite_journal_flag
+
 
 
    def createFavoritesForUser(self, username):

@@ -166,7 +166,9 @@ def journal_page(request,recipe_id):
     data = DB.getAllJournals()
     for entry in data:
         if recipe_id == str(entry['id']):
-            return render(request, 'journal_page.html',{'entry': entry})
+            print('entry page: ', entry['id'])
+            isJournalFavorited = DB.checkUserFavoritedList(str(request.user), recipe_id)
+            return render(request, 'journal_page.html',{'entry': entry, 'isJournalFavorited': isJournalFavorited})
         
     error_message = 'Error: Journal ID %s does not exist.' % recipe_id
     return render(request, 'error_page.html', {'error_message': error_message})
@@ -190,7 +192,6 @@ def delete_journal(request, journal_id):
 @login_required
 def favorite_journal(request, journal_id):
     print('favorite_journal call')
-    print('request.user: ', request.user)
     if request.user.is_authenticated:
         print('you are logged in')
     else:
@@ -206,4 +207,10 @@ def favorite_journal(request, journal_id):
     
     DB.favoriteJournalByID(journal_id, request.user)
     DB.getFavoriteJournalList(request.user)
+    return redirect('/')
+
+def delete_favorite_journal(request, journal_id):
+    print('remove_favorite_journal call')
+    DB = DBManager.getInstance()
+    DB.removeJournalFromFavorites(journal_id, request.user)
     return redirect('/')

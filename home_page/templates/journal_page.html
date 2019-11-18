@@ -130,8 +130,11 @@
       Fermentation Notes: {{entry.JournalID.Fermentation_notes}}
       <br><br>
 
+      {% if isJournalFavorited == False %}
       <a href="/favorite_journal/{{entry.id}}">Add to favorites</a>
-  
+      {% else %}
+      <a href="/delete_favorite_journal/{{entry.id}}">Remove from favorites</a>
+      {% endif %}
 
 </body>
 
