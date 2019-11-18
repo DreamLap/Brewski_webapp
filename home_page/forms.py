@@ -1,14 +1,14 @@
 from django import forms
 from django.utils.safestring import mark_safe
-from datetime import date
+import datetime
 
 class JournalFormSection0(forms.Form):
 
 	Name_of_brew = forms.CharField(max_length=100)
 	Overall_notes = forms.CharField(widget = forms.Textarea, required = False)
 	Completed = forms.BooleanField(required=False)
-	Date = forms.DateField(initial=date.today(),widget=forms.HiddenInput())
-
+	DateCreated = forms.CharField(initial=str(datetime.date.today()), widget=forms.HiddenInput())
+	
 class JournalFormSection1(forms.Form):
 	
 	Water_Volume = forms.FloatField(min_value = 0)
@@ -62,7 +62,7 @@ class JournalFormSection3(forms.Form):
 	temp_3 = forms.FloatField(min_value = 0.0, required = False)
 	time_3 = forms.FloatField(min_value = 0.0, required = False)
 	End_gravity_3 = forms.FloatField(min_value = 0.0, required = False)
-	ABV = forms.FloatField(min_value = 0.0, required = False)
+	ABV = forms.FloatField(min_value = 0.0, max_value=100.0, required = False)
 	Lager_temp = forms.FloatField(min_value = 0.0, required = False)
 	Lager_time = forms.FloatField(min_value = 0.0, required = False)
 	Fermentation_notes = forms.CharField(widget = forms.Textarea, required = False)

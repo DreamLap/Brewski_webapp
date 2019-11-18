@@ -130,11 +130,7 @@ class DBManager:
       return my_list
    
    def editItem(self, item, table, journal_id):
-      print('----')
-      print('item: ', item)
-      print('table: ', table )
-      print('journal_id: ', journal_id )
-      print('-------')
+      
 
       self.__table =  self.__db[table]
       self.__table.find_one_and_replace( {"_id" : ObjectId(journal_id)}, item, upsert = True )
