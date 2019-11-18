@@ -43,20 +43,21 @@
             var table = $('#table').DataTable( {
         		"columnDefs": [ 
         		{
-            		"targets": 52,
+            		"targets": 55,
             		"data": null,
             		"defaultContent": "<button>View</button>"
         		},
-                { "targets":1, "visible":true},
-                { "targets":2, "visible":true},
-        		{ "targets":3, "visible":true},
-        		{ "targets":4, "visible":true},
-        		{ "targets":5, "visible":true},
-                { "targets":6, "visible":true},
-                { "targets":7, "visible":true},
-                { "targets":8, "visible":true},
-                { "targets":9, "visible":true},
-                { "targets":10, "visible":true},
+                { "targets":0, "visible":true},
+                { "targets":1, "visible":false},
+                { "targets":2, "visible":false},
+        		{ "targets":3, "visible":false},
+        		{ "targets":4, "visible":false},
+        		{ "targets":5, "visible":false},
+                { "targets":6, "visible":false},
+                { "targets":7, "visible":false},
+                { "targets":8, "visible":false},
+                { "targets":9, "visible":false},
+                { "targets":10, "visible":false},
                 { "targets":11, "visible":false},
                 { "targets":12, "visible":false},
                 { "targets":13, "visible":false},
@@ -66,7 +67,7 @@
                 { "targets":17, "visible":false},
                 { "targets":18, "visible":false},
                 { "targets":19, "visible":false},
-                { "targets":20, "visible":false},
+                { "targets":20, "visible":true},
                 { "targets":21, "visible":false},
                 { "targets":22, "visible":false},
                 { "targets":23, "visible":false},
@@ -81,7 +82,7 @@
                 { "targets":32, "visible":false},
                 { "targets":33, "visible":false},
                 { "targets":34, "visible":false},
-                { "targets":35, "visible":false},
+                { "targets":35, "visible":true},
                 { "targets":36, "visible":false},
                 { "targets":37, "visible":false},
                 { "targets":38, "visible":false},
@@ -93,11 +94,14 @@
                 { "targets":44, "visible":false},
                 { "targets":45, "visible":false},
                 { "targets":46, "visible":false},
-                { "targets":47, "visible":false},
+                { "targets":47, "visible":true},
                 { "targets":48, "visible":false},
                 { "targets":49, "visible":false},
                 { "targets":50, "visible":false},
                 { "targets":51, "visible":false},
+                { "targets":52, "visible":true},
+                { "targets":53, "visible":true},
+                { "targets":54, "visible":true}
         		]
         	});
       
@@ -115,6 +119,16 @@
         float: left;
     }
 
+    .datatable{
+        text-align: center;
+        border-radius: 25px;
+        margin-left: auto;
+        margin-right: auto;
+        border: 2px solid #317393;
+        margin-top: 50px;
+        padding: 20px;
+        width: 1100px;
+    }
 
     ul {
         list-style-type: none;
