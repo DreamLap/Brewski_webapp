@@ -1,11 +1,10 @@
 def autofill_form(entry, which_form):
-    #print(entry['JournalID'])
-    #print(which_form)
     data = {}
-    print(entry)
     if which_form == 0:
         data.update({'Name_of_brew': entry['JournalID']['Name_of_brew']})
         data.update({'Overall_notes': entry['JournalID']['Overall_notes']})
+        data.update({'Completed': entry['JournalID']['Completed']})
+        data.update({'DateCreated': entry['JournalID']['DateCreated']})
         return data
 
     elif which_form == 1:
