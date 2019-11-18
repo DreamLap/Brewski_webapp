@@ -23,7 +23,10 @@ def profile_page(request):
     is_logged_in = True
     DB = DBManager.getInstance()
     data = DB.getAllJournals()
+
+    #checks to see if user has create a favorties journal
     favorite_list = DB.getFavoriteJournalList(request.user)
+    print('fav list: ', favorite_list)
     return render(request, 'profile.html', {'data': data,'is_logged_in' : is_logged_in, 'favorite_list' : favorite_list})
 
 def home_page(request):
@@ -34,7 +37,7 @@ def home_page(request):
     return render(request, 'home_page.html', {'data': data,'is_logged_in' : is_logged_in})
 
 #def login(request):
-#    print('login request')
+    #print('login request')
 #   return render(request, 'login.html')
 
 def edit_journal(request, journal_id):
@@ -198,7 +201,6 @@ def delete_journal(request, journal_id):
 
 @login_required
 def favorite_journal(request, journal_id):
-    print('favorite_journal call')
     if request.user.is_authenticated:
         print('you are logged in')
     else:
@@ -214,10 +216,9 @@ def favorite_journal(request, journal_id):
     
     DB.favoriteJournalByID(journal_id, request.user)
     DB.getFavoriteJournalList(request.user)
-    return redirect('/')
+    return journal_page(request, journal_id)
 
 def delete_favorite_journal(request, journal_id):
-    print('remove_favorite_journal call')
     DB = DBManager.getInstance()
     DB.removeJournalFromFavorites(journal_id, request.user)
-    return redirect('/')
+    return journal_page(request, journal_id)
