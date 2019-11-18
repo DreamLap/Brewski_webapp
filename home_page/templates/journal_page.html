@@ -38,6 +38,8 @@
     <br>
     Original Creator: {{entry.UserID}}
     <br>
+    Journal created date: {{entry.JournalID.DateCreated}}
+    <br>
     General notes: {{entry.JournalID.Overall_notes}}
     <br><br>
    
@@ -111,7 +113,7 @@
     Starting Volume: {{entry.JournalID.Start_vol}} Gallons
     <br>
     Ending Volume: {{entry.JournalID.End_vol}} Gallons
-    <br>
+    <br><br>
 
     {% else %}
     {{entry.UserID}} hasn't completed the hop information for boil yet, come back again later!
@@ -149,9 +151,10 @@
     whirlfloc: {{entry.JournalID.Whirlfloc}}
     <br>
 
-    {% if entry.JournalID.Whirlpool_time == True %}
+    {% if entry.JournalID.Whirlfloc == True %}
     Whirlpool time: {{entry.JournalID.Whirlpool_time}} Minutes
     <br>
+
     {% endif %}
 
     Boil notes: {{entry.JournalID.Boil_notes}}

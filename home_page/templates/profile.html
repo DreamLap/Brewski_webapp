@@ -43,8 +43,6 @@
     <div class="card card-body">
       Link: <a href="/journal_page/{{journals.id}}">{{journals.JournalID.Name_of_brew}}</a>
       <br>
-      Name of creator: {{journals.UserID}}
-      <br>
       Journal ID:{{journals.id}}
       <br>
       <a href="/edit_journal/{{journals.id}}">Edit</a>
@@ -75,8 +73,7 @@
       <br>
       Journal ID:{{journals.id}}
       <br>
-      <a href="/edit_journal/{{journals.id}}">Edit</a>
-      <a href="/delete_journal/{{journals.id}}" onclick="return confirm('Are you sure you want to delete this journal?');">Delete</a>
+      <a href="/delete_favorite_journal/{{journals.id}}">Remove from favorites</a>
     </div>
   </div>
   {% endfor %}
