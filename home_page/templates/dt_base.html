@@ -43,7 +43,7 @@
             var table = $('#table').DataTable( {
         		"columnDefs": [ 
         		{
-            		"targets": 51,
+            		"targets": 52,
             		"data": null,
             		"defaultContent": "<button>View</button>"
         		},
@@ -97,17 +97,13 @@
                 { "targets":48, "visible":false},
                 { "targets":49, "visible":false},
                 { "targets":50, "visible":false},
-
+                { "targets":51, "visible":false},
         		]
         	});
       
         	$('#table tbody').on( 'click', 'button', function () {
         	var data = table.row( $(this).parents('tr') ).data();
-        	alert( "Name of this brew is: "+ data[ 0 ] +
-        		"\nName of Hop 1: " + data[20] +
-        		"\nHop 1 Amount: " + data[21] +
-        		"\nHop 1 Alpha Acid: " + data[22] +
-        		"\nHop 1 Time: " + data[23]  );
+            location.href = "/journal_page/" + data[51];
     		} );
         });
 

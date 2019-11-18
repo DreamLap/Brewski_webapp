@@ -29,64 +29,154 @@
     {% endif %}
   </ul>
 
-      
   <form method="POST">
     {% csrf_token %}
-
-    <p>
-      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#section0" aria-expanded="false"
-        aria-controls="collapseExample">
-        Information Step
-      </button>
-    </p>
-    <div class="collapse" id="section0">
-      <div class="card card-body">
-        {{ form0|linebreaks }}
+    <div id="container">
+      <p>
+        <button class="button" type="button" data-toggle="collapse" data-target="#section0">
+          Information Step
+        </button>
+      </p>
+      <div class="collapse" id="section0">
+        <div class="card card-body">
+          Recipe Name: <br> {{form0.Name_of_brew}}
+          <br>
+          Completed Brew?: {{form0.Completed}}
+          <br>
+          Overall Notes: <br> {{form0.Overall_notes}}
+          <br>
+          {{form0.DateCreated}}
+        </div>
       </div>
-    </div>
 
-    <p>
-      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#section1" aria-expanded="false"
-        aria-controls="collapseExample">
-        Mash Step
-      </button>
-    </p>
-    <div class="collapse" id="section1">
-      <div class="card card-body">
-        {{ form1|linebreaks }}
+      <p>
+        <button class="button" type="button" data-toggle="collapse" data-target="#section1">
+          Mash Step
+        </button>
+      </p>
+      <div class="collapse" id="section1">
+        <div class="card card-body">
+          Water Volume: <br>{{form1.Water_Volume}} Gallons
+          <br><br>
+          Step 1 Mash temperature: {{form1.Step_Mash_1_temp}} °F
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          Time: {{form1.Step_Mash_1_time}} Minutes
+          <br>
+          Step 2 Mash temperature: {{form1.Step_Mash_2_temp}} °F
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          Time: {{form1.Step_Mash_2_time}} Minutes
+          <br>
+          Step 3 Mash temperature: {{form1.Step_Mash_3_temp}} °F
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          Time: {{form1.Step_Mash_3_time}} Minutes
+          <br>
+          Step 4 Mash temperature: {{form1.Step_Mash_4_temp}} °F
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          Time: {{form1.Step_Mash_4_time}} Minutes
+          <br>
+          Step 5 Mash temperature: {{form1.Step_Mash_5_temp}} °F
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          Time: {{form1.Step_Mash_5_time}} Minutes
+          <br><br>
+          Mash out: {{form1.Mash_out}}
+          <br><br>
+          Sparge temperature: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form1.Sparge_temp}} °F
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          Time: {{form1.Sparge_time}} Minutes
+          <br><br>
+          Recirc time: <br>{{form1.Recirc_time}} Minutes
+          <br><br>
+          Mash Notes: <br>{{form1.Mash_notes}}
+          <br>
+        </div>
       </div>
-    </div>
 
-    <p>
-      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#section2" aria-expanded="false"
-        aria-controls="collapseExample">
-        Boil Step
-      </button>
-    </p>
-    <div class="collapse" id="section2">
-      <div class="card card-body">
-        {{ form2|linebreaks }}
+      <p>
+        <button class="button" type="button" data-toggle="collapse" data-target="#section2" aria-expanded="false"
+          aria-controls="collapseExample">
+          Boil Step
+        </button>
+      </p>
+      <div class="collapse" id="section2">
+        <div class="card card-body">
+          Starting Volume: {{form2.Start_vol}} Gallons
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          Ending Volume: {{form2.End_vol}} Gallons
+          <br><br>
+          Hop 1 Name: {{form2.hop_name_1}}
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          Amount: {{form2.hop_amount_1}} ounces
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          Alpha Acid: {{form2.hop_alpha_acid_1}} %
+          <br>
+          Hop 2 Name: {{form2.hop_name_2}}
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          Amount: {{form2.hop_amount_2}} ounces
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          Alpha Acid: {{form2.hop_alpha_acid_2}} %
+          <br>
+          Hop 3 Name: {{form2.hop_name_3}}
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          Amount: {{form2.hop_amount_3}} ounces
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          Alpha Acid: {{form2.hop_alpha_acid_3}} %
+          <br><br>
+          Whirlfloc: {{form2.Whirlfloc}}
+          <br>
+          Whirlfloc Time: <br>{{form2.Whirlpool_time}} Minutes
+          <br><br>
+          Boil notes: <br>{{form2.Boil_notes}}
+          <br>
+        </div>
       </div>
-    </div>
 
-    <p>
-      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#section3" aria-expanded="false"
-        aria-controls="collapseExample">
-        Fermentation Step
-      </button>
-    </p>
-    <div class="collapse" id="section3">
-      <div class="card card-body">
-        {{ form3|linebreaks }}
+      <p>
+        <button class="button" type="button" data-toggle="collapse" data-target="#section3" aria-expanded="false"
+          aria-controls="collapseExample">
+          Fermentation Step
+        </button>
+      </p>
+      <div class="collapse" id="section3">
+        <div class="card card-body">
+          Yeast Name: {{form3.Yeast_name}}
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          Amount: {{form3.Yeast_amount}} ounces
+          <br><br>
+          Start Gravity: <br>{{form3.Start_gravity}}
+          <br><br>
+          Temperature 1: {{form3.temp_1}} °F
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          Time: {{form3.time_1}} Days
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          End Gravity 1: {{form3.End_gravity_1}}
+          <br>
+          Temperature 2: {{form3.temp_2}} °F
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          Time: {{form3.time_2}} Days
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          End Gravity 2: {{form3.End_gravity_2}}
+          <br>
+          Temperature 3: {{form3.temp_3}} °F
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          Time: {{form3.time_3}} Days
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          End Gravity 3: {{form3.End_gravity_3}}
+          <br><br>
+          ABV: {{form3.ABV}} %
+          <br><br>
+          Lager temperature: {{form3.Lager_temp}} °F
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          Time: {{form3.Lager_time}} Days
+          <br><br>
+          Fermentation Notes: <br>{{form3.Fermentation_notes}}
+          <br>
+        </div>
       </div>
+      <input type="submit" value="Submit">
     </div>
-    <input type="submit" value="Submit">
-
-
   </form>
 
 </body>
-
 
 </html>
 
@@ -110,6 +200,32 @@
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+  }
+
+  #container {
+    border-radius: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid #317393;
+    margin-top: 10px;
+    padding: 20px;
+    width: 1000px;
+  }
+
+  .button {
+    border-radius: 25px;
+    width: 100%;
+    background-color: #317393;
+    color: azure;
+    height: 50px;
+  }
+
+  .add {
+    border-radius: 25px;
+    width: 15%;
+    background-color: #317393;
+    color: azure;
+    height: 30px;
   }
 
   .active {
