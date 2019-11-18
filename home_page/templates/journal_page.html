@@ -6,7 +6,7 @@
     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-  <title> {{request.user.username}} </title>
+  <title> {{entry.JournalID.Name_of_brew}} </title>
 </head>
 
 <body>
@@ -90,12 +90,12 @@
     {% endif %}
 
     {% if entry.JournalID.Sparge_time != none %}
-    Sparge Time: {{entry.JournalID.Sparge_time}} Minutes
+    Sparge time: {{entry.JournalID.Sparge_time}} Minutes
     <br>
     {% endif %}
 
     {% if entry.JournalID.Sparge_temp != none %}
-    Recirc Time: {{entry.JournalID.Recirc_time}} Minutes
+    Recirc time: {{entry.JournalID.Recirc_time}} Minutes
     <br>
     {% endif %}
 
@@ -121,27 +121,27 @@
     {% if entry.JournalID.hop_name_1 != "" and entry.JournalID.Start_vol != none %}
     Hop Name 1: {{entry.JournalID.hop_name_1}}
     <br>
-    Hop Amount 1: {{entry.JournalID.hop_amount_1}}
+    Hop Amount 1: {{entry.JournalID.hop_amount_1}} ounces
     <br>
-    Hop Alpha Acid 1: {{entry.JournalID.hop_alpha_acid_1}}
+    Hop Alpha Acid 1: {{entry.JournalID.hop_alpha_acid_1}} %
     <br>
     {% endif %}
 
     {% if entry.JournalID.hop_name_2 != "" and entry.JournalID.Start_vol != none %}
     Hop Name 2: {{entry.JournalID.hop_name_2}}
     <br>
-    Hop Amount 2: {{entry.JournalID.hop_amount_2}}
+    Hop Amount 2: {{entry.JournalID.hop_amount_2}} ounces
     <br>
-    Hop Alpha Acid 2: {{entry.JournalID.hop_alpha_acid_2}}
+    Hop Alpha Acid 2: {{entry.JournalID.hop_alpha_acid_2}} %
     <br>
     {% endif %}
 
     {% if entry.JournalID.hop_name_2 != "" and entry.JournalID.Start_vol != none %}
     Hop Name 3: {{entry.JournalID.hop_name_3}}
     <br>
-    Hop Amount 3: {{entry.JournalID.hop_amount_3}}
+    Hop Amount 3: {{entry.JournalID.hop_amount_3}} ounces
     <br>
-    Hop Alpha Acid 3: {{entry.JournalID.hop_alpha_acid_3}}
+    Hop Alpha Acid 3: {{entry.JournalID.hop_alpha_acid_3}} %
     <br><br>
     {% endif %}
 
@@ -165,7 +165,7 @@
     {% if entry.JournalID.Yeast_name != "" %}
     Yeast Name: {{entry.JournalID.Yeast_name}}
     <br>
-    Yeast Amount: {{entry.JournalID.Yeast_amount}}
+    Yeast Amount: {{entry.JournalID.Yeast_amount}} ounces
     <br>
     Start Gravity: {{entry.JournalID.Start_gravity}}
     <br><br>
@@ -176,9 +176,9 @@
     {% endif %}
 
     {% if entry.JournalID.temp_1 != none and entry.JournalID.Yeast_name != "" %}
-    Temp 1: {{entry.JournalID.temp_1}}
+    Temperature 1: {{entry.JournalID.temp_1}} °F
     <br>
-    Time 1: {{entry.JournalID.time_1}}
+    Time 1: {{entry.JournalID.time_1}} Days
     <br>
     End Gravity 1: {{entry.JournalID.End_gravity_1}}
     <br>
@@ -187,29 +187,29 @@
 
     
     {% if entry.JournalID.temp_2 != none and entry.JournalID.Yeast_name != "" %}
-    Temp 2{{entry.JournalID.temp_2}}
+    Temperature 2: {{entry.JournalID.temp_2}} °F
     <br>
-    Time 2: {{entry.JournalID.time_2}}
+    Time 2: {{entry.JournalID.time_2}} Days
     <br>
     End Gravity 2: {{entry.JournalID.End_gravity_2}}
     <br>
     {% endif %}
 
     {% if entry.JournalID.temp_3 != none and entry.JournalID.Yeast_name != "" %}
-    Temp 3 {{entry.JournalID.temp_3}}
+    Temperature 3: {{entry.JournalID.temp_3}} °F
     <br>
-    Time 3: {{entry.JournalID.time_3}}
+    Time 3: {{entry.JournalID.time_3}} Days
     <br>
     End Gravity 3: {{entry.JournalID.End_gravity_3}}
     <br><br>
     {% endif %}
 
     {% if entry.JournalID.ABV != none and entry.JournalID.Yeast_name != "" %}
-    ABV: {{entry.JournalID.ABV}}
+    ABV: {{entry.JournalID.ABV}} %
     <br>
-    Lager Temp: {{entry.JournalID.Lager_temp}}
+    Lager temperature: {{entry.JournalID.Lager_temp}} °F
     <br>
-    Lager Time: {{entry.JournalID.Lager_time}}
+    Lager Time: {{entry.JournalID.Lager_time}} Days
     <br><br>
     {% endif %}
 

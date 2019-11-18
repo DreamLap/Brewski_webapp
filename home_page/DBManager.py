@@ -62,16 +62,13 @@ class DBManager:
        query = {'_id': str(username)}
        add_value = {"$push": {'Favorites_list': journal_id}}
        self.__table.update(query, add_value)
-       #print('user db response: ')
 
    def removeDeletedJournalFromAllFavorites(self, key):
        self.__table =  self.__db['Favorites']
        self.__table.update( {}, {"$pull": { 'Favorites_list': {"$in": [key]} } },  upsert = False, multi = True )
-       print('key: ', key)
 
    
    def removeJournalFromFavorites(self, journal_id, username):
-       print('removeJournalFromFav DB call')
        self.__table =  self.__db['Favorites']
        self.__table.update( {'_id': str(username)}, {"$pull": { 'Favorites_list': {"$in": [journal_id]} } } )
 
@@ -83,22 +80,24 @@ class DBManager:
 
        #gets 'Favorites' table with user info
        my_list = []
-       #my_list.append(mydoc[0])
        for x in mydoc:
          x['id'] = x.pop('_id')
          my_list.append(x)
 
-       print ('my_list: ', my_list)
-       #converts pointer to object
-       favortie_list = []
-       for journal_id in my_list[0]['Favorites_list']:
-          entry = self.getItemByID(journal_id, 'Journal')
-          if entry == None:
-             continue
-          entry['id'] = entry.pop('_id')
-          favortie_list.append(entry)
+       try:
+          #converts pointer to object
+          favortie_list = []
+          for journal_id in my_list[0]['Favorites_list']:
+            entry = self.getItemByID(journal_id, 'Journal')
+            if entry == None:
+               continue
+            entry['id'] = entry.pop('_id')
+            favortie_list.append(entry)
        
-
+       except IndexError:
+          #creates new favorite list for user
+          self.__table.insert_one({'_id': str(username), 'Favorites_list': []})
+          return []
        return favortie_list
 
    
@@ -106,10 +105,9 @@ class DBManager:
        self.__table = self.__db['Favorites']
        favorite_journal_flag = False
        for document in self.__table.find({'_id': str(username), 'Favorites_list': journal_id}):
-          print(document)
+          #found a entry match, return true
           favorite_journal_flag = True
           break
-       print('document ends, fav_journal_flag: ', favorite_journal_flag)
        return favorite_journal_flag
 
 
@@ -126,11 +124,9 @@ class DBManager:
       for x in mydoc:
          x['id'] = x.pop('_id')
          my_list.append(x)
-      #print(my_list)
       return my_list
    
    def editItem(self, item, table, journal_id):
-      
 
       self.__table =  self.__db[table]
       self.__table.find_one_and_replace( {"_id" : ObjectId(journal_id)}, item, upsert = True )
