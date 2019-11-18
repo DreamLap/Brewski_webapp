@@ -166,7 +166,9 @@ def journal_page(request,recipe_id):
     data = DB.getAllJournals()
     for entry in data:
         if recipe_id == str(entry['id']):
-            return render(request, 'journal_page.html',{'entry': entry})
+            print('entry page: ', entry['id'])
+            isJournalFavorited = DB.checkUserFavoritedList(str(request.user), recipe_id)
+            return render(request, 'journal_page.html',{'entry': entry, 'isJournalFavorited': isJournalFavorited})
         
     error_message = 'Error: Journal ID %s does not exist.' % recipe_id
     return render(request, 'error_page.html', {'error_message': error_message})
@@ -181,14 +183,21 @@ def delete_journal(request, journal_id):
         return render(request, 'error_page.html', {'error_message': error_message})
 
     elif str(request.user) != str(journal_entry['UserID']):
-        error_message = 'You do not have permission to edit journal %s.' % journal_id
+        error_message = 'You do not have permission to delete journal %s.' % journal_id
         return render(request, 'error_page.html', {'error_message': error_message})
 
     DB.deleteItemByID(journal_id, 'Journal')
     return redirect('/')
 
+@login_required
 def favorite_journal(request, journal_id):
     print('favorite_journal call')
+    if request.user.is_authenticated:
+        print('you are logged in')
+    else:
+        print('you are not logged in')
+        return profile_page(request)
+        
     DB = DBManager.getInstance()
     journal_entry = DB.getItemByID(journal_id, 'Journal')
 
@@ -198,4 +207,10 @@ def favorite_journal(request, journal_id):
     
     DB.favoriteJournalByID(journal_id, request.user)
     DB.getFavoriteJournalList(request.user)
+    return redirect('/')
+
+def delete_favorite_journal(request, journal_id):
+    print('remove_favorite_journal call')
+    DB = DBManager.getInstance()
+    DB.removeJournalFromFavorites(journal_id, request.user)
     return redirect('/')

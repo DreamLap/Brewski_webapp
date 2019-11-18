@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <h1 align="center">Welcome to the Brewing Journal!
+  <h1 align="center">Error!
     <img src="{% static 'images/brewjournal.png' %}" type="image" style="width:60px;height:100px;">
   </h1>
   <ul>
@@ -30,6 +30,15 @@
 
     {% endif %}
   </ul>
+
+      <div class="ascii-art">
+          ###### #    #   ##   #    # #####  #      ######
+          #       #  #   #  #  ##  ## #    # #      #      
+          #####    ##   #    # # ## # #    # #      ##### 
+          #        ##   ###### #    # #####  #      #      
+          #       #  #  #    # #    # #      #      #      
+          ###### #    # #    # #    # #      ###### ######
+          </div>
 
   {{error_message}}
 </body>
@@ -64,4 +73,9 @@
   td {
     border: 1px solid black;
   }
+
+  .ascii-art {
+    font-family: monospace;
+    white-space: pre;
+}
 </style>
