@@ -13,8 +13,16 @@
 		<h2>Login</h2>
 		<form method="post">
 			{% csrf_token %}
-			{{ form.as_p }}
-			<button type="submit">Login</button>
+      		{% for field in form %}
+      			<p>
+        		{{ field.label_tag }}<br>
+        		{{ field }}
+        		</p>
+      			{% endfor %}
+  			<button type="submit">Login</button>
+  			{% if form.errors %}
+  			<p style="color:red">Error! Check fields for accuracy.</p>
+  			{% endif %}
 		</form>
 	</div>
 </body>
