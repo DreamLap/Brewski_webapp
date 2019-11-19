@@ -1,5 +1,6 @@
 {% extends 'dt_base.html' %}
 {% block body %}
+<div class="datatable">
     <table id = "table" class = "table table-bordered">
         <thead class = "alert-success">
             <tr>
@@ -55,6 +56,9 @@
                 <th>Lager Time</th>
                 <th>Fermentation Notes</th>
                 <th>JournalID</th>
+                <th>Date Created</th>
+                <th>Brew Complete</th>
+                <th>User ID</th>
                 <th>View</th>
             </tr>
         </thead>
@@ -113,10 +117,14 @@
                 <td>{{ journals.JournalID.Lager_time }}</td>
                 <td>{{ journals.JournalID.Fermentation_notes }}</td>
                 <td>{{ journals.id}}</td>
+                <td>{{ journals.JournalID.DateCreated }}</td>
+                <td>{{ journals.JournalID.Completed }}</td>
+                <td>{{ journals.UserID }}</td>
                 <td></td>
             </tr>
            {% endfor %}
         </tbody>
     </table>
+  </div>
  
 {% endblock %}
